@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/rotatingSlider.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="css/rotatingSlider.css?ver=3" type="text/css" />
 
 <div class="rm_wrapper">
     <div id="rm_container" class="rm_container">
