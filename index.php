@@ -1,8 +1,3 @@
-Workinnnnnnn on indedx gnnn not sure if chnaged but put controllers and this sould ruin the shit
-but vhnaged twig hope it works god please!!!!!!!!!!!!!
-
-<br/>
-
 <?php 
     require 'lib/Slim/Slim.php';
     require 'lib/Views/TwigView.php';
