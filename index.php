@@ -1,4 +1,4 @@
-Workinnnnnnn on indedx gnnn not sure if chnaged but put controllers
+Workinnnnnnn on indedx gnnn not sure if chnaged but put controllers and this sould ruin the shit
 
 <?php 
     require 'lib/Slim/Slim.php';
@@ -34,5 +34,13 @@ Workinnnnnnn on indedx gnnn not sure if chnaged but put controllers
     include_once 'lib/controllers/CombineController.php';
     include_once 'lib/controllers/ImageController.php';
     include_once 'lib/controllers/CombineElementsController.php';
+
+    /**
+     * Step 4: Run the Slim application
+     *
+     * This method should be called last. This is responsible for executing
+     * the Slim application using the settings and routes defined above.
+     */
+    $app->run();
 
 ?>
