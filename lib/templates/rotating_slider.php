@@ -41,8 +41,8 @@
         </div>
     </div>
     <div class="rm_nav">
-        <a id="rm_next" href="#" class="rm_next"></a>
-        <a id="rm_prev" href="#" class="rm_prev"></a>
+        <a id="rm_next" href="#" class="rm_next transition"></a>
+        <a id="rm_prev" href="#" class="rm_prev transition"></a>
     </div>
 <!--     <div class="rm_controls">
         <a id="rm_play" href="#" class="rm_play">Play</a>

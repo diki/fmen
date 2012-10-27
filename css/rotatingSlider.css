@@ -12,6 +12,7 @@ h1{
     width:100%;
     margin:0 auto;
     position:relative;
+    background-image: url('/images/prestige-one.gif');
 }
 .rm_container{
     width:90%;
@@ -96,10 +97,10 @@ h1{
 
     height: 530px;
     background-color: black;
-    opacity: 0.6;
+    opacity: 0.1;
 }
 .rm_nav a:hover{
-    opacity:0.9;
+    opacity:0.5;
 }
 .rm_nav a.rm_next{
     background:black url(../images/next.png) no-repeat top left;

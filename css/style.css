@@ -102,3 +102,11 @@ ul{
     /*font-family: "proxima-nova-bold", "Helvetica Neue", Arial, sans-serif;*/
 }
 
+.transition {
+    -webkit-transition: all 0.27s ease;
+    -moz-transition: all 0.27s ease;
+    -ms-transition: all 0.27s ease;
+    -o-transition: all 0.27s ease;
+    transition: all 0.27s ease;
+}
+
