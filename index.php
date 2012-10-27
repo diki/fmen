@@ -1,4 +1,4 @@
-Workinnnnnnn on indedx gnnn not sure if chnaged
+Workinnnnnnn on indedx gnnn not sure if chnaged but put controllers
 
 <?php 
     require 'lib/Slim/Slim.php';
@@ -26,5 +26,13 @@ Workinnnnnnn on indedx gnnn not sure if chnaged
         'cookies.cipher' => MCRYPT_RIJNDAEL_256,
         'cookies.cipher_mode' => MCRYPT_MODE_CBC
     ));
+
+    session_start();
+    //GET route
+    include_once 'lib/controllers/HomeController.php';
+    include_once 'lib/controllers/UserController.php';
+    include_once 'lib/controllers/CombineController.php';
+    include_once 'lib/controllers/ImageController.php';
+    include_once 'lib/controllers/CombineElementsController.php';
 
 ?>
