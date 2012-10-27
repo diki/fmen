@@ -1,0 +1,84 @@
+/*bb-navtabs*/
+
+.bb-nav-tabs {
+    list-style: none;
+}
+
+.bb-nav-tabs li {
+    float: left;
+}
+
+.bb-tabs-container {
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+}
+
+.bb-tab-content {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bb-tab-list-item {
+    background: white;
+    background: -moz-linear-gradient(top,white 0,#DBDBDB 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,white),color-stop(100%,#DBDBDB));
+    background: -webkit-linear-gradient(top,white 0,#DBDBDB 100%);
+    background: -o-linear-gradient(top,white 0,#DBDBDB 100%);
+    background: -ms-linear-gradient(top,white 0,#DBDBDB 100%);
+    background: linear-gradient(top,white 0,#DBDBDB 100%);
+    
+    padding: 8px 2px 0 0;
+}
+
+.bb-tab-link {
+    padding: 0 24px;
+    text-transform: none;
+    /*font-family: 'Crete Round', serif;*/
+    background: white;
+    font-size: 13px;
+    color: #595959;
+
+    -webkit-transition: all 0.27s ease;
+    -moz-transition: all 0.27s ease;
+    -ms-transition: all 0.27s ease;
+    -o-transition: all 0.27s ease;
+    transition: all 0.27s ease;
+
+    font-weight: bold
+}
+
+.bb-tab-link:hover {
+    color: black;
+}
+
+.bb-tab-links {
+    -webkit-box-shadow: 0 8px 9px -6px #BBB;
+       -moz-box-shadow: 0 8px 9px -6px #BBB;
+            box-shadow: 0 8px 9px -6px #BBB;
+    height: 48px;
+
+}
+
+.bb-tab-links li:first-child {
+    background: white;
+    margin-left: 80px;
+}
+
+.bb-tab-links li:first-child > a:hover{
+    color: white;
+}
+
+.first-tab {
+    text-shadow: none;
+    color: white;
+    background: #00966E;
+    background: -moz-linear-gradient(top,#00966E 0,#007556 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#00966E),color-stop(100%,#007556));
+    background: -webkit-linear-gradient(top,#00966E 0,#007556 100%);
+    background: -o-linear-gradient(top,#00966E 0,#007556 100%);
+    background: -ms-linear-gradient(top,#00966E 0,#007556 100%);
+    background: linear-gradient(top,#00966E 0,#007556 100%);
+}
