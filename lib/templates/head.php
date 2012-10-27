@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 <meta name="HandheldFriendly" content="true" />
 
-<base href="http://localhost:8090/ginkatego/" />
+<!-- <base href="http://localhost:8090/ginkatego/" /> -->
 
 <link rel="stylesheet" href="css/normalize.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css?ver=1" type="text/css" />
