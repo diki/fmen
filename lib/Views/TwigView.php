@@ -43,7 +43,7 @@ class TwigView extends Slim_View {
     /**
      * @var string The path to the Twig code directory WITHOUT the trailing slash
      */
-    public static $twigDirectory = './Extension/Twig';
+    public static $twigDirectory = 'Extension/Twig';
 
     /**
      * @var array The options for the Twig environment, see
