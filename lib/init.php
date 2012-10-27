@@ -5,10 +5,15 @@
     include_once 'DBB.php';
     include_once 'SimpleImage.php';
 
-    DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), getenv('MYSQL_USERNAME'), 
-        getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
+    //only works at php fog
+    // DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), getenv('MYSQL_USERNAME'), 
+    //     getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
     
-    DB::useConnection(getenv('MYSQL_DB_NAME'));
+    //works everywhere locally or pondabox
+    DB::setConnection("ginkatego_phpfogapp_com", "ginkatego_phpfogapp_com","musdikici--61339", 
+        "yi92W55O57zH", "mysql-shared-02.phpfog.com"); 
+
+    DB::useConnection("ginkatego_phpfogapp_com");
 
     DB::connect();
     //$username="ali";
