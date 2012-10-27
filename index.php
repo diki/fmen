@@ -1,4 +1,3 @@
-Any one up!!
 <?php 
     require 'lib/Slim/Slim.php';
     require 'lib/Views/TwigView.php';
