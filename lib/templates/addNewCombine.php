@@ -4,7 +4,6 @@
 
 {% block content %}
 
-    ol arttik goddiii,
     <style>
         .SI-FILES-STYLIZED label.cabinet
         {
@@ -65,8 +64,6 @@
     
 
     <div>
-
-        değişim gel artık a.q.
         
         <div id="combineEditor">
         </div>
