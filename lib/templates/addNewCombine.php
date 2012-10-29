@@ -65,12 +65,12 @@
 
     <div>
         
-        hadi byaaaaa
+        hadi byaaaaa ol gari
         <div id="combineEditor">
         </div>
 
         <div id="combineElementsManager" style="">
-            <h2>Kombin Elemanları haydi bre shit happens</h2>
+            <h2>Kombin Elemanları</h2>
             
             <div id="combineElements">
 
