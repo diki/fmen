@@ -66,7 +66,8 @@
 
     <div>
 
-        değişim geldi
+        değişim gel artık a.q.
+        
         <div id="combineEditor">
         </div>
 
