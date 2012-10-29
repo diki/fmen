@@ -10,7 +10,7 @@
         {
             width: 225px;
             height: 225px;
-            background: url(css/images.jpg) 0 0 no-repeat;
+            background: url(/css/images.jpg) 0 0 no-repeat;
 
             display: block;
             overflow: hidden;
@@ -91,7 +91,7 @@
 {% block scripts %}
     <script src="/js/lib/jquery.js" type="text/javascript"></script>
     {% include 'scripts.html' %}
-    
+
     <script type="text/javascript" src="/js/lib/jquery.form.js"></script>
     <script type="text/javascript" src="/js/lib/si.files.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.image-uploader.js"></script>
@@ -215,7 +215,7 @@
         </ul>
 
         <div id="combineImgArea">
-            <form id="combineImageForm" action="images" method="POST" enctype="multipart/form-data">
+            <form id="combineImageForm" action="/images" method="POST" enctype="multipart/form-data">
                 <ul style="list-style: none;">
                     <li>
                         <% if(imgID===undefined) { %>
@@ -273,24 +273,6 @@
             cev = new CombineEditorView({
                 model: combineModel
             });
-            /**
-             * binds change event of form input and on change submit form and show preview
-             * @return {[type]} [description]
-             */
-            // $("#imgUpload").change(function(){
-            //      $("#combineImageForm").ajaxSubmit(function(resp){
-
-            //         var srcText =JSON.parse(resp).id;
-            //         window.combineImageId = srcText.split("/")[1].split(".")[0];
-                    
-            //         $("#combineImage").attr("src", "/ginkatego/"+srcText);
-
-            //         $("#combineImageForm").fadeOut(function(){
-            //             $("#combineImage").fadeIn();
-            //         });
-            //      });
-            // });
-
             
             /**
              *  click of add button
