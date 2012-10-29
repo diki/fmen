@@ -24,7 +24,7 @@
     //echo "eeeeeee";
     //
     
-    define("HTTP_URL", "/ginkatego");
+    define("HTTP_URL", "/");
     define ("MAX_SIZE","10000"); 
 
     //This function reads the extension of the file. It is used to determine if the file  is an image by checking the extension.

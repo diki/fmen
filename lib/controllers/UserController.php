@@ -4,7 +4,7 @@
 $app->get('/user/register', function () use ($app){
         
     if(isset($_SESSION['username'])){
-        $app->redirect('/glim');
+        $app->redirect('/');
     } else {
         $title = "ginkatego kullanıcı kaydı";
         $bodyTitle = "User registration";
