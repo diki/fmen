@@ -87,17 +87,17 @@
 
 {% block scripts %}
 
-    <script type="text/javascript" src="js/lib/jquery.form.js"></script>
-    <script type="text/javascript" src="js/lib/si.files.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.image-uploader.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.form.js"></script>
+    <script type="text/javascript" src="/js/lib/si.files.js"></script>
+    <script type="text/javascript" src="/js/plugins/jquery.image-uploader.js"></script>
 
-    <script type="text/javascript" src="js/models/CombineElementModel.js"></script>
-    <script type="text/javascript" src="js/collections/CombineElementsCollection.js"></script>
-    <script type="text/javascript" src="js/models/Combine.js"></script>
+    <script type="text/javascript" src="/js/models/CombineElementModel.js"></script>
+    <script type="text/javascript" src="/js/collections/CombineElementsCollection.js"></script>
+    <script type="text/javascript" src="/js/models/Combine.js"></script>
 
-    <script type="text/javascript" src="js/views/CombineEditorView.js"></script>
-    <script type="text/javascript" src="js/views/CombineElementsGroupView.js"></script>
-    <script type="text/javascript" src="js/views/CombineElementEditorView.js"></script>
+    <script type="text/javascript" src="/js/views/CombineEditorView.js"></script>
+    <script type="text/javascript" src="/js/views/CombineElementsGroupView.js"></script>
+    <script type="text/javascript" src="/js/views/CombineElementEditorView.js"></script>
 
     <script type="text/template" id="newElementCreator">
        
