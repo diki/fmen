@@ -92,7 +92,8 @@
 
 
 {% block scripts %}
-    <script src="/js/lib/jquery.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" type="text/javascript"></script>
+
     {% include 'scripts.html' %}
 
     <script type="text/javascript" src="/js/lib/jquery.form.js"></script>
