@@ -213,6 +213,28 @@
                 <textarea id="combineNotes" rows="10" cols="90" style="width: 500px;"><%=(notes === undefined? '' : notes)%></textarea>
             </li>
             <li>
+                <label>Cinsiyet</label>
+                <select id="combineSex">
+                    <option value="default">Please select</option>
+                    <option value="men">Erkek</option>
+                    <option value="women">Kadın</option>
+                </select>
+            </li>
+
+            <li>
+                <label>Cinsiyet</label>
+                <select id="combineCategory">
+                    <option value="default">Please select</option>
+                    <option value="casual">Casual</option>
+                    <option value="sport">Sport</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="sweet">Sweet</option>
+                    <option value="charming">Charming</option>
+                    <option value="sexy">Sexy</option>
+                </select>
+            </li>
+
+            <li>
                <button type="submit" class="btn" id="newCombineButton"><i class="icon-upload"></i>Oluştur</button>
             </li>
         </ul>
@@ -229,6 +251,7 @@
                             <input type="file" class="file" name="image" id="imgUpload"/>
                         </label>
                     </li>
+
                     <li>
                         <input type="hidden" value="400" name="height" />
                         <input type="hidden" value="400" name="width" />
