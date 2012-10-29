@@ -154,12 +154,12 @@
         $newname = $folderName.$image_name;
 
         // Catch the imagedata
-        // ob_start();
-        // $copied = imagejpeg($new, $newname);
-        // $data = ob_get_clean();
+        ob_start();
+        $copied = imagejpeg($new, $newname);
+        $data = ob_get_clean();
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket("fofgfog", S3::ACL_PUBLIC_READ);
+        // $s3->putBucket("fofgfog", S3::ACL_PUBLIC_READ);
         
         // if($s3->putObjectFile($newname, "ginkatego", "uploads/" . $image_name, S3::ACL_PUBLIC_READ)){
         //     unlink($newname);
