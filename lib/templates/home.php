@@ -33,6 +33,7 @@
 {% block scripts %}
 
     {% include 'scripts.html' %}
+    
     <link rel="stylesheet" href="css/bb-tab.css?ver=1" type="text/css" />
     <script type="text/javascript" src="/js/plugins/jquery.easing.1.3.js"></script>
 
