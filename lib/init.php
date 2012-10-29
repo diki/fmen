@@ -6,8 +6,10 @@
     include_once 'SimpleImage.php';
     include_once('S3.php');
 
-    DB::setConnection("kiks", "kiks", "db_user", "2125167");
-    DB::useConnection("kiks");
+    DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), 
+        getenv('MYSQL_USERNAME'), getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
+
+    DB::useConnection(getenv('MYSQL_DB_NAME'));
 
     DB::connect();
     //$username="ali";
