@@ -1,7 +1,9 @@
 <?php 
     require 'lib/Slim/Slim.php';
     require 'lib/Views/TwigView.php';
-
+    include_once 'lib/db.php';
+    include_once 'lib/init.php';
+    
     // include_once 'lib/db.php';
     // include_once 'lib/init.php';
     /**
