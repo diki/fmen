@@ -6,12 +6,12 @@
     include_once 'SimpleImage.php';
 
     //only works at php fog
-    // DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), getenv('MYSQL_USERNAME'), 
-    //     getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
+    DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), getenv('MYSQL_USERNAME'), 
+        getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
     
     //works everywhere locally or pondabox
-    DB::setConnection("ginkatego_phpfogapp_com", "ginkatego_phpfogapp_com","musdikici--61339", 
-        "yi92W55O57zH", "mysql-shared-02.phpfog.com"); 
+    // DB::setConnection("ginkatego_phpfogapp_com", "ginkatego_phpfogapp_com","musdikici--61339", 
+    //     "yi92W55O57zH", "mysql-shared-02.phpfog.com"); 
 
     DB::useConnection("ginkatego_phpfogapp_com");
 
