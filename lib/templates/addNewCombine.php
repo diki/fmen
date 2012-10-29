@@ -87,8 +87,11 @@
     </div>
 {% endblock %}
 
-{% block scripts %}
 
+{% block scripts %}
+    <script src="/js/lib/jquery.js" type="text/javascript"></script>
+    {% include 'scripts.html' %}
+    
     <script type="text/javascript" src="/js/lib/jquery.form.js"></script>
     <script type="text/javascript" src="/js/lib/si.files.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.image-uploader.js"></script>
