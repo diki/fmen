@@ -161,12 +161,12 @@
         $s3 = new S3(awsAccessKey, awsSecretKey);
         // $s3->putBucket("fofgfog", S3::ACL_PUBLIC_READ);
         
-        // if($s3->putObjectFile($newname, "ginkatego", "uploads/" . $image_name, S3::ACL_PUBLIC_READ)){
-        //     unlink($newname);
-        //     return $image_name;
-        // } else {
-        //     return "undefined.jpg";
-        // }
+        if($s3->putObjectFile($newname, "ginkatego", "uploads/" . $image_name, S3::ACL_PUBLIC_READ)){
+            unlink($newname);
+            return $image_name;
+        } else {
+            return "undefined.jpg";
+        }
 
     }
 
