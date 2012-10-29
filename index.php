@@ -1,6 +1,6 @@
 <?php 
 
-    echo "hobaaa geliyoır anananan iyiyi ";
+    echo "hobaaa geliyoır anananan iyiyi vay vay vay ";
     require 'lib/Slim/Slim.php';
     require 'lib/Views/TwigView.php';
     // include_once 'lib/db.php';
