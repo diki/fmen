@@ -61,18 +61,13 @@ $app->post('/user/register', function () use ($app){
             return;
         }
 
-        // $email = mysql_real_escape_string($req->params('email'));
-        // $password = mysql_real_escape_string($req->params('password'));
-        // $type = mysql_real_escape_string($req->params('type'));
-        // $name = mysql_real_escape_string($req->params('name'));
-        // $surname = mysql_real_escape_string($req->params('surname'));
-        // $username = "";
-        $email = $req->params('email');
-        // $password = mysql_real_escape_string($req->params('password'));
-        // $type = mysql_real_escape_string($req->params('type'));
-        // $name = mysql_real_escape_string($req->params('name'));
-        // $surname = mysql_real_escape_string($req->params('surname'));
-        // $username = "";
+        $email = mysql_real_escape_string($req->params('email'));
+        $password = mysql_real_escape_string($req->params('password'));
+        $type = mysql_real_escape_string($req->params('type'));
+        $name = mysql_real_escape_string($req->params('name'));
+        $surname = mysql_real_escape_string($req->params('surname'));
+        $username = "";
+       
 
         $userRows = DB::read("SELECT * FROM members WHERE email=':email'", $email);
         $rows = $userRows->result;
@@ -107,7 +102,7 @@ $app->post('/user/register', function () use ($app){
                 $_SESSION['name'] =  $name;
                 $_SESSION['profiled'] = 0;
                 
-                echo json_encode(array('success'=>true, 'redirect_url'=>'/glim'));
+                echo json_encode(array('success'=>true, 'redirect_url'=>'/'));
                 die();
             }
         }      
