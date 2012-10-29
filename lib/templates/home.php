@@ -4,6 +4,11 @@
 
 {% block content %}
     
+    <script src="/js/lib/jquery.js" type="text/javascript"></script>
+
+    <div style="z-index: 0;">
+        {% include 'rotating_slider.php' %}
+    </div>
     <div class="main-container">
 <!--         <h1 class="main-logo-line">
             <span>
@@ -33,7 +38,7 @@
 {% block scripts %}
 
     {% include 'scripts.html' %}
-    
+
     <link rel="stylesheet" href="css/bb-tab.css?ver=1" type="text/css" />
     <script type="text/javascript" src="/js/plugins/jquery.easing.1.3.js"></script>
 
@@ -70,18 +75,18 @@
                 content: "this is tab4"
             }]
         });
-        var buttons = { previous:$('#jslidernews2 .button-previous'),next:$('#jslidernews2 .button-next') };      
-        $('#jslidernews2').lofJSidernews({ 
-            interval:5000,
-            easing:'easeInOutQuad',
-            duration:1200,
-            auto:true,
-            mainWidth:1400,
-            mainHeight:500,
-            navigatorHeight   : 100,
-            navigatorWidth    : 310,
-            maxItemDisplay:3
-        });            
+/*        var buttons = { previous:$('#jslidernews2 .button-previous'),next:$('#jslidernews2 .button-next') };      
+        // $('#jslidernews2').lofJSidernews({ 
+        //     interval:5000,
+        //     easing:'easeInOutQuad',
+        //     duration:1200,
+        //     auto:true,
+        //     mainWidth:1400,
+        //     mainHeight:500,
+        //     navigatorHeight   : 100,
+        //     navigatorWidth    : 310,
+        //     maxItemDisplay:3
+        // });  */          
     });    
 </script>
 {% endblock %}
