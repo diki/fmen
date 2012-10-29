@@ -16,11 +16,10 @@ var CombineEditorView = Backbone.View.extend({
 
         this.$el.html(_.template($("#combineEditorViewTemplate").html())(this.model.attributes));
 
-        console.log(this.$el.find("#imgUpload"));
-        //SI.Files.stylize(this.$el.find("#imgUpload")[0]);
-        // _.each($("#imgUpload"), function (ell, idx) {
-        //     SI.Files.stylize(ell);
-        // });
+        SI.Files.stylize(this.$el.find("#imgUpload")[0]);
+        _.each($("#imgUpload"), function (ell, idx) {
+            SI.Files.stylize(ell);
+        });
         // 
         // 
         // console.log("ajaxed form");
@@ -33,7 +32,6 @@ var CombineEditorView = Backbone.View.extend({
 
     uploadImage: function(e){
 
-        console.log("anayın amı  chane laaaaaa");
         var self = this;
          $("#combineImageForm", this.el).ajaxSubmit(function(resp){
 

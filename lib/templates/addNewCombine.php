@@ -222,7 +222,7 @@
             </li>
 
             <li>
-                <label>Cinsiyet</label>
+                <label>Kategori</label>
                 <select id="combineCategory">
                     <option value="default">Please select</option>
                     <option value="casual">Casual</option>
