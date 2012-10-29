@@ -97,6 +97,7 @@
                     return;
                 }
 
+                console.log("before ajax");
                 $.ajax({
                     type: "POST",
                     url: "/user/register",
