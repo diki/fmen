@@ -6,7 +6,7 @@ $app->get('/user/register', function () use ($app){
     if(isset($_SESSION['username'])){
         $app->redirect('/glim');
     } else {
-        $title = "SexualPinner register";
+        $title = "ginkatego kullanıcı kaydı";
         $bodyTitle = "User registration";
         
         $view = $app -> view();
