@@ -69,7 +69,7 @@
         </div>
 
         <div id="combineElementsManager" style="">
-            <h2>Kombin Elemanları haydi bre</h2>
+            <h2>Kombin Elemanları haydi bre shit happens</h2>
             
             <div id="combineElements">
 
@@ -288,7 +288,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "server/combines/add",
+                    url: "/server/combines/add",
                     data: {
                         imgID: combineImageId,
                         name: $("#combineName").val(),
