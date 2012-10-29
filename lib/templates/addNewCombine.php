@@ -69,7 +69,7 @@
         </div>
 
         <div id="combineElementsManager" style="">
-            <h2>Kombin Elemanları</h2>
+            <h2>Kombin Elemanları haydi bre</h2>
             
             <div id="combineElements">
 
@@ -85,6 +85,8 @@
             </div>
         </div>
     </div>
+
+
 {% endblock %}
 
 
