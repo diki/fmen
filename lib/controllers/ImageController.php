@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../sdk-1.5.15/sdk.class.php");
+    require_once("/lib/sdk-1.5.15/sdk-1.5.15/sdk.class.php");
     //define a maxim size for the uploaded images in Kb
     $app->post('/images', function () use ($app){
         
@@ -8,7 +8,7 @@
         if (!$s3->if_bucket_exists($bucket_name)) {
             $response = $s3->create_bucket($bucket_name, AmazonS3::REGION_US_E1, AmazonS3::ACL_PUBLIC);
         }
-        
+
         $req = $app->request();
         // $height = intval($req->params("height"));
         // $width = intval($req->params("width"));
