@@ -316,7 +316,9 @@
                     data: {
                         imgID: combineImageId,
                         name: $("#combineName").val(),
-                        notes: $("#combineNotes").val()
+                        notes: $("#combineNotes").val(),
+                        sex: $("#combineSex > option:selected").val(),
+                        category: $("#combineCategory > option:selected").val()
                     },
 
                     success: function(resp){

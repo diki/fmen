@@ -30,6 +30,8 @@
             $imgID = $req->params("imgID");
             $name = $req->params("name");
             $notes = $req->params("notes");
+            $sex = $req->params("sex");
+            $category = $req->params("category");
 
             //echo randString(8);
             $newCombineID = randString(8);
@@ -37,7 +39,9 @@
                 "id" => $newCombineID,
                 "imgId" => $imgID,
                 "name" => $name,
-                "note" => $notes
+                "note" => $notes,
+                "sex" => $sex,
+                "category" => $category
             );
 
             $res = DB::insert("combines", $newCombine, true);
