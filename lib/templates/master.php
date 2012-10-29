@@ -13,7 +13,8 @@
         
             {% include 'header2.php' %}
 
-            {% include 'scripts.html' %}
+            {# % include 'scripts.html' % #}
+
             <div style="z-index: 0;">
                 {% include 'rotating_slider.php' %}
             </div>

@@ -50,6 +50,7 @@
 
 {% block scripts %}
 
+    <script src="/js/lib/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function(){
             $("#registerButton").click(function(){
