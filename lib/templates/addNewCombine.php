@@ -66,7 +66,7 @@
 
     <div>
 
-        değişim
+        değişim geldi
         <div id="combineEditor">
         </div>
 
