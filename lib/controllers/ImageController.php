@@ -1,5 +1,5 @@
 <?php
-
+    
     require_once('lib/sdk-1.5.15/sdk.class.php');
     //define a maxim size for the uploaded images in Kb
     $app->post('/images', function () use ($app){
