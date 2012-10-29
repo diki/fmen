@@ -38,7 +38,7 @@ var CombineEditorView = Backbone.View.extend({
             console.log("dear lord");
             var srcText =JSON.parse(resp).id;
             //window.combineImageAddress = srcText
-            window.combineImageId = srcText.split("/")[1];
+            window.combineImageId = srcText;
             
             $("#combineImage", self.el).attr("src", "http://s3.amazonaws.com/ginkatego/uploads/"+srcText);
 
