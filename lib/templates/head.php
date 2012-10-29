@@ -4,15 +4,15 @@
 
 <!-- <base href="http://localhost:8090/ginkatego/" /> -->
 
-<link rel="stylesheet" href="css/normalize.css" type="text/css" />
-<link rel="stylesheet" href="css/style.css?ver=1" type="text/css" />
-<link rel="stylesheet" href="css/header2.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="/css/normalize.css" type="text/css" />
+<link rel="stylesheet" href="/css/style.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="/css/header2.css?ver=1" type="text/css" />
 
 <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
 
-<link href="css/bootstrap.css" rel="stylesheet"> 
+<link href="/css/bootstrap.css" rel="stylesheet"> 
 
-<link rel="stylesheet" href="css/style2.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="/css/style2.css?ver=1" type="text/css" />
 
 <link href='http://fonts.googleapis.com/css?family=Krona+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
