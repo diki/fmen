@@ -7,11 +7,11 @@
         <div class="sep"></div>
         <ul class="header-nav-list">
             <li class="header-nav-list-item">
-                <a class="header-nav-list-item-link" href="/ginkatego/women">Kadın</a>
+                <a class="header-nav-list-item-link" href="/women">Kadın</a>
             </li>
             <li style="width: 20px; margin: 10px 24px 0 24px; float: left;"><span>/</span></li>
             <li class="header-nav-list-item">
-                <a class="header-nav-list-item-link" href="/ginkatego/men">Erkek</a>
+                <a class="header-nav-list-item-link" href="/men">Erkek</a>
             </li> 
             <li style="width: 20px; margin: 10px 24px 0 24px; float: left;"><span>/</span></li>
             <li class="header-nav-list-item">
