@@ -8,7 +8,7 @@
             //echo "npooooooooooooooooooooooooooo";
             
         }
-        $title = "Home Title";
+        $title = "tilt tieii";
         $body = "Home body";
 
         $view = $app -> view();
@@ -38,7 +38,10 @@
             $s = true;
             $username = $_SESSION['username'];
         } 
-        $view -> setData(array('title' => $title));
+
+        //calculate total for men add id to DOM
+        $res = DB::read('SELECT * from combines where sex="men"');
+        $view -> setData(array('title' => $title, 'count' => $res->rows));
 
         $app->render('men.php');
 

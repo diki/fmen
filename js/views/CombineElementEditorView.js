@@ -67,7 +67,6 @@ var CombineElementEditorView = Backbone.View.extend({
 
         element.save({},    {
             success: function(){
-
                 window.combine.get("elements").add(element);
                 console.log("element saved", element);
             }

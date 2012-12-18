@@ -36,7 +36,7 @@ var BBTabView = Backbone.View.extend({
 
         var ul = $('<ul class="header-nav-list bb-tab-links"></ul>');
 
-            
+        console.log("created"); 
         //create menu items
         _.each(tabs, function(tab, idx){
             var li = $('<li class="header-nav-list-item bb-tab-list-item" data-target="bb_tab_'+idx+'"><a class="header-nav-list-item-link bb-tab-link" href="">'+tab.name+'</a></li>');
@@ -46,6 +46,7 @@ var BBTabView = Backbone.View.extend({
             ul.append(li);
         });
 
+        console.log("broooo");
         this.$el.append(ul);
     },
 

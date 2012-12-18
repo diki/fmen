@@ -10,7 +10,6 @@
 
 .bb-tabs-container {
     width: 100%;
-    border: 1px solid black;
     position: relative;
 }
 
@@ -55,10 +54,10 @@
 }
 
 .bb-tab-links {
-    -webkit-box-shadow: 0 8px 9px -6px #BBB;
+/*    -webkit-box-shadow: 0 8px 9px -6px #BBB;
        -moz-box-shadow: 0 8px 9px -6px #BBB;
             box-shadow: 0 8px 9px -6px #BBB;
-    height: 48px;
+    height: 48px;*/
 
 }
 

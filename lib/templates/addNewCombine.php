@@ -147,7 +147,7 @@
             <li style="float: left;">
                 <div class="img-upload-wrapper">
                     
-                    <form class="img-upload-form" action="images" method="POST" enctype="multipart/form-data">
+                    <form class="img-upload-form" action="/images" method="POST" enctype="multipart/form-data">
                         <ul>
                             <li>
                                 <label class="cabinet"> 
@@ -254,8 +254,8 @@
                     </li>
 
                     <li>
-                        <input type="hidden" value="400" name="height" />
-                        <input type="hidden" value="400" name="width" />
+                        <input type="hidden" value="570" name="width" />
+                        <input type="hidden" value="570" name="height" />
                     </li>
                 </ul>
             </form>
@@ -329,6 +329,11 @@
                         console.log("creating new combine model");
                         
                         window.combine = new Combine();
+                        combine.set("imgID", combineImageId);
+                        combine.set("imgSrc", combineImageId);
+                        combine.set("notes", $("#combineNotes").val());
+                        combine.set("sex", $("#combineSex > option:selected").val());
+                        combine.set("category", $("#combineCategory > option:selected").val());
                         combine.id = resp.id;
 
                         //handling DOM events inside of it

@@ -11,8 +11,6 @@
                 <span style="margin-left: -22px;">katego</span>
             </span>
         </h1> -->
-
-
         <div class="discover">
             <div class="discover-cont">
                 <!-- <div style="font-weight: bold;"><span style="color: #007C5B;">ginkatego</span> KOMBİN KOLEKSİYONU</div> -->
@@ -46,44 +44,32 @@
     </script>
 
     <script type="text/javascript">
-    $(document).ready( function(){ 
+        $(document).ready( function(){ 
 
-        var tabView = new BBTabView({
-            el: "#tab-view",
-            height: 400,
-            tabs: [{
-                name: "EN ÇOK BEĞENİLENLER",
-                content: "tab facotiets",
-                active: true
-            },{
-                name: "MODA",
-                content: "This is tab1"
-                // active: true
-            }, {
-                name: "CASUAL",
-                content: "This is tab2"
-            }, {
-                name: "SPOR",
-                content: "this is tab3"
-            }, {
-                name: "ŞIK",
-                content: "this is tab4"
-            }]
-        });
-/*        var buttons = { previous:$('#jslidernews2 .button-previous'),next:$('#jslidernews2 .button-next') };      
-        // $('#jslidernews2').lofJSidernews({ 
-        //     interval:5000,
-        //     easing:'easeInOutQuad',
-        //     duration:1200,
-        //     auto:true,
-        //     mainWidth:1400,
-        //     mainHeight:500,
-        //     navigatorHeight   : 100,
-        //     navigatorWidth    : 310,
-        //     maxItemDisplay:3
-        // });  */          
-    });    
-</script>
+            var tabView = new BBTabView({
+                el: "#tab-view",
+                height: 400,
+                tabs: [{
+                    name: "EN ÇOK BEĞENİLENLER",
+                    content: "tab facotiets",
+                    active: true
+                },{
+                    name: "MODA",
+                    content: "This is tab1"
+                    // active: true
+                }, {
+                    name: "CASUAL",
+                    content: "This is tab2"
+                }, {
+                    name: "SPOR",
+                    content: "this is tab3"
+                }, {
+                    name: "ŞIK",
+                    content: "this is tab4"
+                }]
+            });        
+        });    
+    </script>
 {% endblock %}
 
 

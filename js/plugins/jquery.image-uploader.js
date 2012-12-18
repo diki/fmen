@@ -16,7 +16,7 @@
         $("form", self).ajaxSubmit(function(resp){
             var srcText =JSON.parse(resp).id;
 
-            $("img.img-preview", self).attr("src", "/ginkatego/"+srcText);
+            $("img.img-preview", self).attr("src", "http://s3.amazonaws.com/ginkatego/uploads/"+srcText);
             $("img.img-preview", self).fadeIn();
             $("form", self).fadeOut(function(){
                 $("img.img-preview", self).fadeIn();

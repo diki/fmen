@@ -11,19 +11,16 @@
 
     <body>
         
-            {% include 'header2.php' %}
+        {% include 'header2.php' %}
 
-        <div id="stage">
-        
-<!--             {% include 'userLogin.php' %} -->
+        {% block contentHeader %}
+        {% endblock %}
 
-
+        <div id="stage">    
             <div id="content">
                 {% block content %}
                 {% endblock %}
             </div>
-            
-
         </div>
         
         {% block scripts %}

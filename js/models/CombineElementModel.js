@@ -1,6 +1,6 @@
 var CombineElement = Backbone.Model.extend({
 
-    url: "ginkatego/server/celements/manage",
+    url: "/server/celements/manage",
     defaults: {
         "imgId"                 :   "",
         "note"                  :   "notes",

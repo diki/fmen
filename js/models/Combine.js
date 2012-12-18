@@ -6,7 +6,9 @@ var Combine = Backbone.Model.extend({
         "notes"             : undefined,
         "creationDate"      : "creation date",
         "name"              : undefined,
-        "imgID"             : undefined
+        "imgId"             : undefined,
+        "sex"               : undefined,
+        "category"          : undefined
     },
 
     initialize: function(){

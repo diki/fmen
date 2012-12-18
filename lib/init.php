@@ -6,12 +6,12 @@
     include_once 'SimpleImage.php';
     include_once('S3.php');
 
-    DB::setConnection(getenv('MYSQL_DB_NAME'), getenv('MYSQL_DB_NAME'), 
-        getenv('MYSQL_USERNAME'), getenv('MYSQL_PASSWORD'), getenv('MYSQL_DB_HOST'));
+    DB::setConnection("kiks", "kiks", 
+        "root", "root", "localhost");
 
-    DB::useConnection(getenv('MYSQL_DB_NAME'));
+    DB::useConnection("kiks");
 
-    DB::connect();
+    // DB::connect();
     //$username="ali";
     //$res = DB::read("SELECT * FROM members WHERE username='ali'", $username);
     // $sql = mysql_query("SELECT username FROM members WHERE username = '".$username."'");
@@ -20,7 +20,7 @@
     //echo "eeeeeee";
     //
     
-    define("HTTP_URL", "/ginkatego");
+    define("HTTP_URL", "/");
     define ("MAX_SIZE","10000"); 
 
 
