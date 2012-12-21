@@ -372,14 +372,15 @@ a.cat {
     -moz-border-radius: 3px;
     border-radius: 3px;
     
-    background: black;
+    color: #117C5C;
+    background: white;
     background: -moz-linear-gradient(top,white 0,#F4F4F4 100%);
     background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,white),color-stop(100%,#F4F4F4));
-    background: -webkit-linear-gradient(top,black 0,#F4F4F4 100%);
+    background: -webkit-linear-gradient(top,white 0,#F4F4F4 100%);
     background: -o-linear-gradient(top,white 0,#F4F4F4 100%);
     background: -ms-linear-gradient(top,white 0,#F4F4F4 100%);
-    background: linear-gradient(top,black 0,#F4F4F4 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFF4F4F4',GradientType=0);
+    background: linear-gradient(top,white 0,#F4F4F4 100%);
+    filter:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFF4F4F4',GradientType=0);
     color: #8D8D8D;
     
     font-size: 13px;
@@ -400,11 +401,10 @@ a.cat {
     font-weight: 600;
 
 /*    background: black;*/
-    color: white;
 }
 
 .category-list .cat.active {
-    /*border: 1px #DADADA solid;
+    border: 1px #DADADA solid;
     background: #F8F8F8;
     background: -moz-linear-gradient(top,#F8F8F8 0,#EEE 100%);
     background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#F8F8F8),color-stop(100%,#EEE));
@@ -424,7 +424,7 @@ a.cat {
     background: -o-linear-gradient(top,white 0,#F4F4F4 100%);
     background: -ms-linear-gradient(top,white 0,#F4F4F4 100%);
     background: linear-gradient(top,white 0,#F4F4F4 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFF4F4F4',GradientType=0);*/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF',endColorstr='#FFF4F4F4',GradientType=0);
 }
 
 .category-list-sl {

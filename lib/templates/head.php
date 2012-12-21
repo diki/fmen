@@ -10,7 +10,7 @@
 
 <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
 
-<link href="/css/bootstrap.css" rel="stylesheet"> 
+<link href="/css/bootstrap/css/bootstrap.cosmo.css" rel="stylesheet"> 
 
 <link rel="stylesheet" href="/css/style2.css?ver=1" type="text/css" />
 
@@ -21,3 +21,6 @@
 <link href='http://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Scada:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Crete+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/css/bootstrap/js/bootstrap.js"></script>

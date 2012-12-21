@@ -16,7 +16,7 @@
             </div>
             
             <!-- <div class="sep"></div> -->
-            <!-- <hr class="rainbow" /> -->
+            <hr class="rainbow" />
             <!-- <div id="tab-view"></div> -->
             
             <ul class="category-list">

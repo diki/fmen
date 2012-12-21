@@ -45,7 +45,13 @@ var CombineEditorView = Backbone.View.extend({
             $("#combineImageForm label.cabinet", self.el).width(100);
             $("#combineImageForm label.cabinet", self.el).height(20);
 
-            $("#combineImage", self.el).fadeIn();
+            $("#combineImageForm label.cabinet", self.el).css({
+                "position": "absolute",
+                "top": 0,
+                "left": 0
+            });
+
+            $(".combine-image-wrapper", self.el).fadeIn();
             
          });
     }

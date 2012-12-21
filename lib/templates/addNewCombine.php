@@ -39,8 +39,8 @@
         }
 
         #combineImageForm {
-            margin-left: 188px;
-            margin-top: 40px;
+            margin-left: 100px;
+            margin-top: 82px;
         }
 
         #combineElements {
@@ -60,12 +60,19 @@
             margin-bottom:  16px;
         }
 
+        .img-container {
+            border-right: 2px dashed #E5E5E5;
+            /*border-radius: 20px;*/
+            height: 600px;
+            position: relative;
+        }
+
     </style>
     
 
-    <div>
+    <div style="padding-top: 24px;">
         
-        hadi byaaaaa ol gari
+        <!-- content inside is filled by backbone view -->
         <div id="combineEditor">
         </div>
 
@@ -92,7 +99,6 @@
 
 
 {% block scripts %}
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" type="text/javascript"></script>
 
     {% include 'scripts.html' %}
 
@@ -202,45 +208,16 @@
 
     <script type="text/template" id="combineEditorViewTemplate">
        
-       <h1>Yeni kombin ekle</h1>
             
-        <ul style="list-style: none; float: left;" class="left-list">
-            <li>
-                <label>İsim</label>
-                <input type="text" id="combineName" value=<%=(name === undefined? '""' : '"'+name+'"')%>/>
-            </li>
-            <li>
-                <label>Açıklamalar</label>
-                <textarea id="combineNotes" rows="10" cols="90" style="width: 500px;"><%=(notes === undefined? '' : notes)%></textarea>
-            </li>
-            <li>
-                <label>Cinsiyet</label>
-                <select id="combineSex">
-                    <option value="default">Please select</option>
-                    <option value="men">Erkek</option>
-                    <option value="women">Kadın</option>
-                </select>
-            </li>
 
-            <li>
-                <label>Kategori</label>
-                <select id="combineCategory">
-                    <option value="default">Please select</option>
-                    <option value="casual">Casual</option>
-                    <option value="sport">Sport</option>
-                    <option value="luxury">Luxury</option>
-                    <option value="sweet">Sweet</option>
-                    <option value="charming">Charming</option>
-                    <option value="sexy">Sexy</option>
-                </select>
-            </li>
-
-            <li>
-               <button type="submit" class="btn" id="newCombineButton"><i class="icon-upload"></i>Oluştur</button>
-            </li>
-        </ul>
-
-        <div id="combineImgArea">
+        <div class="span6 img-container" id="combineImgArea" style="">
+            <div class="combine-image-wrapper" style="position: relative; display: none; width: 380px;height: 570px;margin-left:40px; margin-top: 10px;" >
+                <% if(imgID===undefined) { %>
+                    <img id="combineImage" src="" style="width: 380px;height: 570px;" />        
+                <% } else { %>
+                    <img id="combineImage" src="/ginkatego/uploaded-images/<%=imgID%>" style="width: 380px;height:570px;" />
+                <% } %>
+            </div>
             <form id="combineImageForm" action="/images" method="POST" enctype="multipart/form-data">
                 <ul style="list-style: none;">
                     <li>
@@ -259,15 +236,51 @@
                     </li>
                 </ul>
             </form>
-
-            <% if(imgID===undefined) { %>
-                <img id="combineImage" src="" style="display: none; margin-left: 32px;" />        
-            <% } else { %>
-                <img id="combineImage" src="/ginkatego/uploaded-images/<%=imgID%>" style="display: none; margin-left: 32px;" />
-            <% } %>
-                   
         </div>
 
+
+        <div class="span4 left-container">
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <span>Heads up!</span>
+            </div>
+
+            <ul style="list-style: none;" class="combine-attr-list">
+                <li>
+                    <label>İsim</label>
+                    <input type="text" id="combineName" value=<%=(name === undefined? '""' : '"'+name+'"')%>/>
+                </li>
+                <li>
+                    <label>Açıklamalar</label>
+                    <textarea id="combineNotes" rows="4" cols="90"><%=(notes === undefined? '' : notes)%></textarea>
+                </li>
+                <li>
+                    <label>Cinsiyet</label>
+                    <select id="combineSex">
+                        <option value="default">Please select</option>
+                        <option value="men">Erkek</option>
+                        <option value="women">Kadın</option>
+                    </select>
+                </li>
+
+                <li>
+                    <label>Kategori</label>
+                    <select id="combineCategory">
+                        <option value="default">Please select</option>
+                        <option value="casual">Casual</option>
+                        <option value="sport">Sport</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="sweet">Sweet</option>
+                        <option value="charming">Charming</option>
+                        <option value="sexy">Sexy</option>
+                    </select>
+                </li>
+
+                <li>
+                   <button type="submit" class="btn" id="newCombineButton"><i class="icon-upload"></i>Oluştur</button>
+                </li>
+            </ul>
+        </div>
         <br style="clear: both" />
     </script>
 

@@ -34,8 +34,6 @@
             $category = $req->params("category");
             $creation_date = date("Y-m-d H:i:s");
 
-            var_dump($imgID);
-
             //echo randString(8);
             $newCombineID = randString(8);
             $newCombine = array(
