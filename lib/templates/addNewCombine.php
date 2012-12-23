@@ -277,7 +277,7 @@
                 </li>
 
                 <li>
-                   <button type="submit" class="btn" id="newCombineButton"><i class="icon-upload"></i>Oluştur</button>
+                   <button type="submit" class="btn btn-primary" id="newCombineButton">Oluştur</button>
                 </li>
             </ul>
         </div>

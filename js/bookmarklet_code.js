@@ -1,0 +1,1 @@
+javascript:var domain='http://ec2-50-19-187-229.compute-1.amazonaws.com';var d=document.createElement('script');d.setAttribute('language','javascript');d.setAttribute('src','http://ec2-50-19-187-229.compute-1.amazonaws.com/js/bookmarklet.js?seed='+Math.random()*100000);document.body.appendChild(d);void(0);

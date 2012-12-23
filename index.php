@@ -16,6 +16,7 @@
      * Refer to the online documentation for available settings.
      */
 
+    
     $app = new Slim(array(
         'debug' => true,
         'templates.path' => 'lib/templates',
@@ -30,6 +31,11 @@
     ));
 
     session_start();
+
+    /*
+        include models 
+     */
+    
     //GET route
     include_once 'lib/controllers/HomeController.php';
     include_once 'lib/controllers/UserController.php';
@@ -37,6 +43,8 @@
     include_once 'lib/controllers/ImageController.php';
     
     include_once 'lib/controllers/CombineElementsController.php';
+
+    
 
     /**
      * Step 4: Run the Slim application
