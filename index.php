@@ -35,7 +35,9 @@
     /*
         include models 
      */
-    
+    // include_once 'lib/models/UserListModel.php';
+    // include_once 'lib/controllers/HomeController.php';
+
     //GET route
     include_once 'lib/controllers/HomeController.php';
     include_once 'lib/controllers/UserController.php';
@@ -44,6 +46,8 @@
     
     include_once 'lib/controllers/CombineElementsController.php';
 
+    include_once 'lib/controllers/UserRecordController.php';
+    include_once 'lib/controllers/UserListController.php';
     
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-class UserList 
+class UserRecord
 {
 
     static function read($recordId) {
@@ -14,8 +14,12 @@ class UserList
         return $result;
     }
 
-    static function create($src, $folder="not_assigned", $width=0, $height=0){
+    static function create($recordModel){
 
+
+        //do not create if img source already exist
+        // $recRes = DB::read('SELECT * from user_record WHERE imageUrl="'.$recordModel['imgUrl']. '"');
+        // return $recRes;
         /*
             create id here that is why we need a global id generator here which is implemented on init.php
          */
@@ -27,23 +31,34 @@ class UserList
          */
         $owner = $_SESSION['username'];
 
+        $md5 = md5($recordModel["imgUrl"]);
+        // $recRes = DB::read('SELECT * from user_record WHERE md5="'.$md5. '"');
+        
+        // return $md5;
+
         $created_at = date("Y-m-d H:i:s");
         $newRecord = array(
             "id" => $id,
             "owner" =>  $owner,
             "created_at" => $created_at,
-            "type"=> "record",
-            "folder" => $folder,
-            "src" => $src,
-            "width" => $width,
-            "height" => $height
+            "type"=> $recordModel["type"],
+            "folder" => $recordModel["folder"],
+            "sourceUrl" => $recordModel["srcUrl"],
+            "imageUrl" => $recordModel["imgUrl"],
+            "note" => $recordModel["note"],
+            "md5" => $md5
         );
 
         $res = DB::insert("user_record", $newRecord, true);
 
         if($res->success){
-            echo json_encode(array('success'=>true, 'id'=>$id));
+            return $newRecord;
+        } else {
+            return false;
         }
+        // if($res->success){
+        //     echo json_encode(array('success'=>true, 'id'=>$id));
+        // }
     }
 
     static function readRecordsOfUser($username) {

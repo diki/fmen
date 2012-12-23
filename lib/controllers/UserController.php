@@ -2,29 +2,6 @@
 
 require_once "lib/models/UserListModel.php";
 
-$app->get('/user/:name', function($name) use ($app){
-
-
-    $view = $app -> view();
-        
-    $title = "Profile"; 
-
-    $listsOfUser = UserList::readListsOfUser($name);
-    var_dump($listsOfUser);
-    exit;
-    
-    $view -> setData(array('title' => $title));
-    if($_SESSION['username']==$name){
-        $app->render('private_profile.php');
-        exit;
-    } else {
-        $app->render('public_profile.php');
-        exit;
-    }
-
-    
-});
-   
 
 //user operations
 $app->get('/user/register', function () use ($app){
@@ -215,6 +192,28 @@ $app->post('/user/logout', function () use ($app){
     session_destroy();
     $app->redirect(HTTP_URL);
 
+});
+
+$app->get('/user/:name', function($name) use ($app){
+
+
+    $view = $app -> view();
+        
+    $title = "Profile"; 
+
+    $listsOfUser = UserList::readListsOfUser($name);
+
+    
+    $view -> setData(array('title' => $title, ''));
+    if($_SESSION['username']==$name){
+        $app->render('private_profile.php');
+        exit;
+    } else {
+        $app->render('public_profile.php');
+        exit;
+    }
+
+    
 });
 
 

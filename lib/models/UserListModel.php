@@ -1,5 +1,7 @@
 <?php
 
+// require_once 'lib/init.php';
+
 class UserList 
 {
 
@@ -16,6 +18,7 @@ class UserList
 
     static function create($listName){
 
+        // return $listName;
         /*
             create id here that is why we need a global id generator here which is implemented on init.php
          */
@@ -38,8 +41,11 @@ class UserList
         $res = DB::insert("user_list", $newList, true);
 
         if($res->success){
-            echo json_encode(array('success'=>true, 'id'=>$id));
+            return $newList;
+        } else {
+            return false;
         }
+
     }
 
     static function readListsOfUser($username) {
