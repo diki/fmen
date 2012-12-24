@@ -46,7 +46,8 @@ class UserRecord
             "sourceUrl" => $recordModel["srcUrl"],
             "imageUrl" => $recordModel["imgUrl"],
             "note" => $recordModel["note"],
-            "md5" => $md5
+            "md5" => $md5,
+            "price" => $recordModel["price"]
         );
 
         $res = DB::insert("user_record", $newRecord, true);

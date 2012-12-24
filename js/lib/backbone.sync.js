@@ -39,7 +39,8 @@ Backbone.sync = function(method, model, options){
 
     var url = "";
     if(model.url!==undefined){
-        url="../"+model.url + "/" + action;
+        // url="../"+model.url + "/" + action;
+        url = model.url + "/" + action;;
     } else {
         url = "server.php";
         _.extend(options.data, {

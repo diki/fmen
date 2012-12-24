@@ -16,7 +16,8 @@
             background: #3FB618;
         }        
     </style>
-    <h2>upload</h2>
+
+    <h2>Upload</h2>
     <div id="container">
 
         <input type="hidden" value="{{imgUrl}}" id="imgUrl" />
@@ -49,6 +50,9 @@
                         <option value="piece" selected="true">Parça</option>
                         <option value="combine">Kombin</option>
                     </select>
+
+                    <label for="price">Fiyat</label>
+                    <input type="text" id="price"/>
                 </li>
                 <li>
                     <button id="addNewRecord" class="btn btn-primary">Kaydı Yükle</button>
@@ -166,14 +170,15 @@
         $("#addNewRecord").click(function(e){
             var folder = "not_assigned";
             if($("li.selected").length > 0){
-                folder = $("li.selected").html();
+                folder = $("li.selected").attr("id");
             }
             var newRecordModel = {
                 "folder": folder,
                 "imgUrl": $("#imgUrl").val(),
                 "srcUrl": $("#srcUrl").val(),
                 "type": $("#type").val(),
-                "note": $("#note").val()
+                "note": $("#note").val(),
+                "price": $("#price").val()
             }
 
             $.ajax({
@@ -185,10 +190,17 @@
                 },
 
                 success: function(resp){
-                    console.log("server", resp);
+
+                    $("#container").html(
+                        '<div class="alert alert-success">Kayıt başarıyla yaratıldı</div>'
+                    );
+
+                    setTimeout(function(){
+                        window.close();    
+                    }, 3000);
+                    
                 }
             });
-            console.log(newRecordModel, "annaaaa");
         });
    </script>
 {% endblock %}

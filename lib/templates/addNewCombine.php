@@ -92,6 +92,22 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal hide fade" id="userProductsWindow">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Modal header</h3>
+          </div>
+          <div class="modal-body">
+            <p>One fine body…</p>
+            <ul id="userProducts">
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn">Close</a>
+            <a href="#" class="btn btn-primary">Save changes</a>
+          </div>
+        </div>
     </div>
 
 
@@ -108,7 +124,11 @@
 
     <script type="text/javascript" src="/js/models/CombineElementModel.js"></script>
     <script type="text/javascript" src="/js/collections/CombineElementsCollection.js"></script>
+
     <script type="text/javascript" src="/js/models/Combine.js"></script>
+
+    <script type="text/javascript" src="/js/models/UserRecord.js"></script>
+    <script type="text/javascript" src="/js/collections/UserRecordCollection.js"></script>
 
     <script type="text/javascript" src="/js/views/CombineEditorView.js"></script>
     <script type="text/javascript" src="/js/views/CombineElementsGroupView.js"></script>
@@ -240,12 +260,16 @@
 
 
         <div class="span4 left-container">
-            <div class="alert alert-error">
+            <div class="alert alert-success" id="infoMessage" style="display: none;">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <span>Heads up!</span>
             </div>
 
-            <ul style="list-style: none;" class="combine-attr-list">
+            <div id="title" style="display: none">
+                Kombin resmi üzerine tıklayarak ürün kataloğunuzdan ürün ekleyin
+            </div>
+
+            <ul style="list-style: none;" class="combine-attr-list" id="combineOperations">
                 <li>
                     <label>İsim</label>
                     <input type="text" id="combineName" value=<%=(name === undefined? '""' : '"'+name+'"')%>/>
@@ -314,46 +338,17 @@
                 model: combineModel
             });
             
-            /**
-             *  click of add button
-             *
-             * sends server request  to create new combine combine with uploaded image id on server
-             * also sets window.combine and window.newCombineId values
-             * 
-             * @return {[type]} [description]
+            /*
+                create UserRecordListView and initialize UserProductCollection and fetch
+                for latter use, enable them load parallel
              */
-            $("#newCombineButton").click(function(){
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "/server/combines/add",
-                    data: {
-                        imgID: combineImageId,
-                        name: $("#combineName").val(),
-                        notes: $("#combineNotes").val(),
-                        sex: $("#combineSex > option:selected").val(),
-                        category: $("#combineCategory > option:selected").val()
-                    },
-
-                    success: function(resp){
-                        console.log("new combine created with id ", resp.id);
-                        window.newCombineID = resp.id;
-
-                        console.log("creating new combine model");
-                        
-                        window.combine = new Combine();
-                        combine.set("imgID", combineImageId);
-                        combine.set("imgSrc", combineImageId);
-                        combine.set("notes", $("#combineNotes").val());
-                        combine.set("sex", $("#combineSex > option:selected").val());
-                        combine.set("category", $("#combineCategory > option:selected").val());
-                        combine.id = resp.id;
-
-                        //handling DOM events inside of it
-                        //will be a Backbone View in future
-                        $("#combineElementsManager").trigger("combineCreated");
-                    }
-                });
+            window.userRecordCol = new UserRecordCollection();
+            userRecordCol.fetch({
+                data: {
+                    start: 0,
+                    offset: 10,
+                    list: false
+                }
             });
 
             $("#combineElementsManager").bind("combineCreated", function(e){

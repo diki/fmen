@@ -48,21 +48,13 @@
                 } else {
                     echo json_encode(array('success'=>false));
                 }
-                // return $newElement;
-                // $res = UserList::create($newElement['name']);
-
-                // if($res){
-                //     echo json_encode(array('success'=>true, 'id'=>$res['id']));
-                // } else {
-                //     echo json_encode(array('success'=>false));
-                // }
                 
                 break;
             
             case 'read':
                 $owner = $_SESSION['username'];
 
-                $res = UserList::readListsOfUser($owner);
+                $res = UserRecord::readRecordsOfUser($owner, $req->params("start"), $req->params("offset"), $req->params("list"));
 
                 echo json_encode(array('success'=>true, 'data'=>$res));
 
