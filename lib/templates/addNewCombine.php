@@ -3,7 +3,8 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-
+    
+    <link rel="stylesheet" type="text/css" href="/css/products.css">
     <style>
         .SI-FILES-STYLIZED label.cabinet
         {
@@ -94,21 +95,18 @@
         </div>
 
         <div class="modal hide fade" id="userProductsWindow">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Modal header</h3>
-          </div>
-          <div class="modal-body">
-            <p>One fine body…</p>
-            <ul id="userProducts">
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <a href="#" class="btn">Close</a>
-            <a href="#" class="btn btn-primary">Save changes</a>
-          </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Kayıtlarınız</h3>
+            </div>
+            <div class="modal-body" id="productCatalog">
+
+            </div>
+            <div class="modal-footer">
+                    <a href="#" class="btn btn-primary disabled" id="add-product-from-catalog">Seçili Parçaları Ekle</a>
+                </div>
+            </div>
         </div>
-    </div>
 
 
 {% endblock %}
@@ -345,10 +343,79 @@
             window.userRecordCol = new UserRecordCollection();
             userRecordCol.fetch({
                 data: {
-                    start: 0,
-                    offset: 10,
+                    offset: 0,
+                    limit: 10,
                     list: false
                 }
+            });
+
+            /*
+                fill user catalog on modal box on fetch
+             */
+            
+            var productCatalogItemTemplate = '<div class="product-catalog-wrapper" id="<%=id%>">'+
+                // '<img src="<%=imageUrl%>" />' +
+                '<div class="catalog-image-wrapper"></div>' +
+                '<div class="product-catalog-operations">' +
+                    '<div style="display: inline-block"><span>Fiyat: </span><span><%=price%></span>' +
+                    '<a style="display: block;" href="<%=sourceUrl%>" target="_blank">Mağazaya git</a></div>' +
+                    // '<a class="add-product-button">Ekle</a>' +
+                '</div>' +
+            '</div>';
+            userRecordCol.on("reset", function(col){
+                col.each(function(m){
+                    /*
+                        set image width and height on load
+                     */
+                    var imageObj = new Image();
+                    imageObj.src = m.get("imageUrl");
+                    var imageWidth = 0;
+                    var imageHeight = 0;
+
+                    imageObj.onload = function(){
+                        console.log("image loaded", this.width, this.height);
+                        
+                        if (imageObj.width > imageObj.height) { // landscape
+                            topMargin = Math.floor(( 200 - (200 * imageObj.height / imageObj.width)) / 2);
+                            imageWidth = 200;
+                            imageHeight = Math.round(200 * imageObj.height / imageObj.width);
+                        } else if (imageObj.width < imageObj.height) {
+                            leftMargin = Math.floor(( 200 - (200 * imageObj.width / imageObj.height)) / 2);
+                            imageWidth = Math.round(200 * imageObj.width / imageObj.height);
+                            imageHeight = 200;
+                        }
+
+                        imageObj.style.margin = topMargin+"px 0";
+                        imageObj.width = imageWidth;
+                        imageObj.height = imageHeight;
+                    }
+
+                    // imageObj.width = imageWidth;
+                    // imageObj.height = imageHeight;
+
+                    $("#productCatalog").append(_.template(productCatalogItemTemplate)(m.attributes));
+
+                    var el = $("#"+m.id);
+                    /*
+                        add click event
+                     */
+                    el.click(function(){
+
+                        if($(this).hasClass("selected")){
+                            $(this).removeClass("selected");
+
+                            if($(".product-catalog-wrapper.selected").length==0){
+                                $("#add-product-from-catalog").addClass("disabled");
+                            }
+                            return;
+                        };
+                        // $(".product-catalog-wrapper.selected").removeClass("selected");
+                        $(this).addClass("selected");
+                        $("#add-product-from-catalog").removeClass("disabled");
+                    });
+                    $(".catalog-image-wrapper", el).html(imageObj);
+                    // el.prepend(imageObj);
+                });
             });
 
             $("#combineElementsManager").bind("combineCreated", function(e){

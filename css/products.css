@@ -1,0 +1,48 @@
+.product-catalog-wrapper {
+    width: 220px;
+    float: left;
+
+    margin: 0 18px;
+}
+
+.product-catalog-wrapper:hover {
+    background: #e2fadb;
+}
+
+.product-catalog-wrapper.selected {
+    background: #379F15;
+}
+
+.product-catalog-wrapper.selected span{
+    color: white;
+}
+.product-catalog-wrapper.selected a {
+    color: white;
+}
+
+.catalog-image-wrapper {
+    /*border: 1px solid black;*/
+    text-align: center;
+
+    width: 200px;
+    margin-left: 10px;
+
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+
+    margin-top: 10px;
+    background: white;
+}
+
+.product-catalog-operations {
+    margin-left: 10px;
+}
+
+.add-product-button {
+    display: inline-block;
+    margin-left: 73px;
+    vertical-align: top;
+    font-size: 20px;
+    padding-top: 17px;
+    cursor: pointer;
+}

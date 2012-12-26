@@ -103,6 +103,7 @@ var CombineEditorView = Backbone.View.extend({
     },
 
     addCombineElement: function(e){
+        
         /*
             calculate mouse position relative to target
             if image laoded ofcourse
@@ -113,6 +114,8 @@ var CombineEditorView = Backbone.View.extend({
 
             var relX = e.pageX - parentOffset.left;
             var relY = e.pageY - parentOffset.top;
+
+            $("#userProductsWindow").modal("show");
         }
     }
 

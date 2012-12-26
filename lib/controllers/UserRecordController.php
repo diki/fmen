@@ -54,7 +54,7 @@
             case 'read':
                 $owner = $_SESSION['username'];
 
-                $res = UserRecord::readRecordsOfUser($owner, $req->params("start"), $req->params("offset"), $req->params("list"));
+                $res = UserRecord::readRecordsOfUser($owner, $req->params("limit"), $req->params("offset"), $req->params("list"));
 
                 echo json_encode(array('success'=>true, 'data'=>$res));
 

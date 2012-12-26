@@ -62,8 +62,20 @@ class UserRecord
         // }
     }
 
-    static function readRecordsOfUser($username) {
-        $res = DB::read("SELECT * FROM user_record WHERE owner=':username'", $username);
+    static function readRecordsOfUser($username, $limit, $offset, $folder) {
+
+        $query = "SELECT * from user_record WHERE owner='" . $username . "'";
+
+        //limit and offset should be always set
+        if($folder!="false") {
+            $query .= " AND folder='" . $folder . "'"; 
+        }
+
+        $query .= " ORDER BY created_at DESC";
+        $query = $query . ' LIMIT ' . $limit . ' OFFSET '.$offset;
+
+        $res = DB::read($query);
+
         $result = array();
         foreach($res->result as $line){
             # add to the list
