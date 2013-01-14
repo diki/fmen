@@ -62,10 +62,23 @@
         }
 
         .img-container {
-            border-right: 2px dashed #E5E5E5;
+            /*border-right: 2px dashed #E5E5E5;*/
             /*border-radius: 20px;*/
             height: 600px;
             position: relative;
+            border: 1px solid #AAA;
+        }
+
+        .combine-image-wrapper {
+            /*background: none repeat scroll 0 0 #F0F0F2;*/
+            height: 570px;
+            margin-left: 20px;
+            margin-top: 10px;
+            padding: 10px 20px;
+            position: relative;
+            width: 380px;
+
+            display: none;
         }
 
     </style>
@@ -74,36 +87,21 @@
     <div style="padding-top: 24px;">
         
         <!-- content inside is filled by backbone view -->
-        <div id="combineEditor">
+        <div id="combineEditor" style="background: white;">
         </div>
 
-        <div id="combineElementsManager" style="">
-            <h2>Kombin Elemanları</h2>
-            
-            <div id="combineElements">
-
-                <ul id="elementsContainer" style="list-style: none;">
-                </ul>
-
-                <button type="submit" class="btn btn-inverse" id="newCombineElementButton"><i class="icon-plus"></i>Yeni eleman ekle</button>
-                <button type="submit" class="btn btn-inverse" id="newAlternativeElementButton"><i class="icon-plus"></i>Seçili kombine yeni eleman ekle</button>
-
-                <div id="newElementInputsContainer">
-
-                </div>
-            </div>
-        </div>
-
+        <!-- products catalog modal box -->
         <div class="modal hide fade" id="userProductsWindow">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Kayıtlarınız</h3>
             </div>
             <div class="modal-body" id="productCatalog">
-
+                <div class="product-list">
+                </div>
             </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-primary disabled" id="add-product-from-catalog">Seçili Parçaları Ekle</a>
+                    <a class="btn btn-primary disabled" id="addProductFromcatalog">Seçili Parçaları Ekle</a>
                 </div>
             </div>
         </div>
@@ -130,7 +128,9 @@
 
     <script type="text/javascript" src="/js/views/CombineEditorView.js"></script>
     <script type="text/javascript" src="/js/views/CombineElementsGroupView.js"></script>
-    <script type="text/javascript" src="/js/views/CombineElementEditorView.js"></script>
+    <script type="text/javascript" src="/js/views/CombineElementEditableView.js"></script>
+
+    <script type="text/javascript" src="/js/views/ProductsCatalogView.js"></script>
 
     <script type="text/template" id="newElementCreator">
        
@@ -196,12 +196,10 @@
     </script>
 
     <script type="text/template" id="combineElementsGroupView">
-       
         <div id="<%=id%>">
             <div class="main-element-img left">
                 <img src="uploaded-images/thumbs/<%=imgId%>.jpg" />
             </div>
-
             <ul class="main-element-info" style="list-style: none;">
                 <li>
                     <h6><%=name%></h6>
@@ -215,21 +213,48 @@
                     <div><%=link%></div>
                 </li>            
             </ul>
-
             <br style="clear: both" />
-
             <ul class="alt-elements" style="list-style: none;">
-
             </ul>
         </div>
     </script>
+
+    <script type="text/template" id="imagePlacerTemplate">
+        <div id="ip_<%=id%>" class="image-placer" style="left:<%=relX%>px;top:<%=relY%>px;">
+            <span style="display: block">o</span>
+            <div class="product-hover-view small">
+                <img src="<%=imageUrl%>" style="float:left;"/>
+                <div class="product-hover-info">
+                    <span><b><%=price%></b> TL</span>
+                    <a href="<%=sourceUrl%>" target="_blank">Mağazaya git</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="combineElementEditableView">
+        <div class="product-item" id="pr_<%=productId%>">
+            <!-- <img src="<%=imageUrl%>" style="float:left;"/> -->
+
+            <div class="product-item-info">
+                <a class="remove-product">X</a>
+                <span><%=note%>&nbsp;</span>
+                <span style="font-size:18px; font-family: 'Georgia', serif;">
+                    <b style="font-size: 24px;"><%=(price+"").toString().split(".")[0]%>,</b> 
+                    <%=(price+"").toString().split(".")[1]%> TL
+                </span>
+                <a class="store" href="<%=sourceUrl%>" target="_blank">Mağazaya git</a>
+            </div>
+        </div>
+    </script>    
+
 
     <script type="text/template" id="combineEditorViewTemplate">
        
             
 
         <div class="span6 img-container" id="combineImgArea" style="">
-            <div class="combine-image-wrapper" style="position: relative; display: none; width: 380px;height: 570px;margin-left:40px; margin-top: 10px;" >
+            <div class="combine-image-wrapper">
                 <% if(imgID===undefined) { %>
                     <img id="combineImage" src="" style="width: 380px;height: 570px;" />        
                 <% } else { %>
@@ -257,13 +282,13 @@
         </div>
 
 
-        <div class="span4 left-container">
+        <div class="span6 left-container">
             <div class="alert alert-success" id="infoMessage" style="display: none;">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <span>Heads up!</span>
             </div>
 
-            <div id="title" style="display: none">
+            <div id="action-info" style="display: none">
                 Kombin resmi üzerine tıklayarak ürün kataloğunuzdan ürün ekleyin
             </div>
 
@@ -320,102 +345,19 @@
 
         (function(){
 
-            /**
-             * maklng buttons stylized
-             * @param  {[type]} ell [description]
-             * @param  {[type]} idx [description]
-             * @return {[type]}     [description]
-             */
-            // _.each($("#imgUpload"), function (ell, idx) {
-            //     SI.Files.stylize(ell);
-            // });
-
-            //TODO: we should fetch or create combineElement model here
-            var combineModel = new Combine();
-            cev = new CombineEditorView({
-                model: combineModel
-            });
-            
             /*
                 create UserRecordListView and initialize UserProductCollection and fetch
                 for latter use, enable them load parallel
              */
             window.userRecordCol = new UserRecordCollection();
-            userRecordCol.fetch({
-                data: {
-                    offset: 0,
-                    limit: 10,
-                    list: false
-                }
+
+            //TODO: we should fetch or create combineElement model here
+            var combineModel = new Combine();
+            window.combineEditorView = new CombineEditorView({
+                model: combineModel
             });
-
-            /*
-                fill user catalog on modal box on fetch
-             */
-            
-            var productCatalogItemTemplate = '<div class="product-catalog-wrapper" id="<%=id%>">'+
-                // '<img src="<%=imageUrl%>" />' +
-                '<div class="catalog-image-wrapper"></div>' +
-                '<div class="product-catalog-operations">' +
-                    '<div style="display: inline-block"><span>Fiyat: </span><span><%=price%></span>' +
-                    '<a style="display: block;" href="<%=sourceUrl%>" target="_blank">Mağazaya git</a></div>' +
-                    // '<a class="add-product-button">Ekle</a>' +
-                '</div>' +
-            '</div>';
-            userRecordCol.on("reset", function(col){
-                col.each(function(m){
-                    /*
-                        set image width and height on load
-                     */
-                    var imageObj = new Image();
-                    imageObj.src = m.get("imageUrl");
-                    var imageWidth = 0;
-                    var imageHeight = 0;
-
-                    imageObj.onload = function(){
-                        console.log("image loaded", this.width, this.height);
-                        
-                        if (imageObj.width > imageObj.height) { // landscape
-                            topMargin = Math.floor(( 200 - (200 * imageObj.height / imageObj.width)) / 2);
-                            imageWidth = 200;
-                            imageHeight = Math.round(200 * imageObj.height / imageObj.width);
-                        } else if (imageObj.width < imageObj.height) {
-                            leftMargin = Math.floor(( 200 - (200 * imageObj.width / imageObj.height)) / 2);
-                            imageWidth = Math.round(200 * imageObj.width / imageObj.height);
-                            imageHeight = 200;
-                        }
-
-                        imageObj.style.margin = topMargin+"px 0";
-                        imageObj.width = imageWidth;
-                        imageObj.height = imageHeight;
-                    }
-
-                    // imageObj.width = imageWidth;
-                    // imageObj.height = imageHeight;
-
-                    $("#productCatalog").append(_.template(productCatalogItemTemplate)(m.attributes));
-
-                    var el = $("#"+m.id);
-                    /*
-                        add click event
-                     */
-                    el.click(function(){
-
-                        if($(this).hasClass("selected")){
-                            $(this).removeClass("selected");
-
-                            if($(".product-catalog-wrapper.selected").length==0){
-                                $("#add-product-from-catalog").addClass("disabled");
-                            }
-                            return;
-                        };
-                        // $(".product-catalog-wrapper.selected").removeClass("selected");
-                        $(this).addClass("selected");
-                        $("#add-product-from-catalog").removeClass("disabled");
-                    });
-                    $(".catalog-image-wrapper", el).html(imageObj);
-                    // el.prepend(imageObj);
-                });
+            window.pcv = new ProductsCatalogView({
+                collection: userRecordCol
             });
 
             $("#combineElementsManager").bind("combineCreated", function(e){
@@ -465,18 +407,18 @@
              * @return {[type]} [description]
              */
             
-            window.combineElementEditorView = new CombineElementEditorView();
-            $("#newCombineElementButton").click(function(){
+            // window.combineElementEditorView = new CombineElementEditorView();
+            // $("#newCombineElementButton").click(function(){
                 
-                //CombineElementEditorView responsible for adding main and sub combine elements                
-                //var ceev = new CombineElementEditorView();
-                combineElementEditorView.render({mainElement: true});
+            //     //CombineElementEditorView responsible for adding main and sub combine elements                
+            //     //var ceev = new CombineElementEditorView();
+            //     combineElementEditorView.render({mainElement: true});
 
-            }); 
+            // }); 
 
-            $("#newAlternativeElementButton").click(function(){
-                combineElementEditorView.render({mainElement: false});
-            });
+            // $("#newAlternativeElementButton").click(function(){
+            //     combineElementEditorView.render({mainElement: false});
+            // });
 
         })();
 

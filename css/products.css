@@ -1,12 +1,21 @@
 .product-catalog-wrapper {
-    width: 220px;
+    width: 171px;
     float: left;
 
-    margin: 0 18px;
+    min-height: 157px;
 }
 
 .product-catalog-wrapper:hover {
     background: #e2fadb;
+}
+
+.product-catalog-wrapper a {
+    font-size: 13px;
+    display: none;
+}
+
+.product-catalog-wrapper:hover a {
+    display: block;
 }
 
 .product-catalog-wrapper.selected {
@@ -24,7 +33,7 @@
     /*border: 1px solid black;*/
     text-align: center;
 
-    width: 200px;
+    width: 150px;
     margin-left: 10px;
 
     border: 1px solid #E5E5E5;
@@ -45,4 +54,122 @@
     font-size: 20px;
     padding-top: 17px;
     cursor: pointer;
+}
+
+.image-placer {
+    position: absolute;
+    background: black;
+    color: white;
+
+    border-radius: 24px;
+    display: block;
+    width:24px;
+    height: 24px;
+
+    text-align: center;
+    cursor: auto;
+}
+
+.product-hover-view {
+    display: none;
+    background: white;
+    width: 240px;
+    height: 96px;
+    text-align: left;
+    padding: 5px;
+
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+
+    margin-top: -9px;
+    margin-left: 12px;
+}
+
+.product-hover-view img {
+    width: 90px;
+    height: 96px;
+}
+
+.image-placer:hover .product-hover-view{
+    display: block;
+}
+
+.product-hover-info {
+    float: left;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.product-hover-info > span {
+    display: block;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.combine-elements-list {
+    margin: 0;
+}
+
+.combine-elements-list li {
+    overflow: hidden;
+    /*margin-bottom: 14px;*/
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /*border: 1px solid red;*/
+
+    padding-bottom: 14px;
+    /*margin-top: 8px;*/
+}
+
+.combine-elements-list li:first-child {
+    margin-top: 8px;
+}
+
+.product-item {
+    overflow: hidden;
+    position: relative;
+}
+
+/* prpduct items on list */
+.catalog-image-wrapper.listed{
+    box-shadow: -3px 3px 12px #BBB;
+    border-radius: 0px;
+    float: left;
+    border: none;
+}
+
+.catalog-image-wrapper.listed > img {
+}
+
+.product-item-info {
+    position: absolute;
+    top: 0;
+    left: 184px;
+    width: 150px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.product-item-info span {
+    display: block;
+    text-align: left;
+}
+
+.product-item-info span:first-child {
+    font-size: 12px;
+}
+
+.product-item-info a.store {
+    display: block;
+    text-align: left;
+    margin-top: 24px;
+}
+
+.product-item-info a.remove-product {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    color: #444;
 }

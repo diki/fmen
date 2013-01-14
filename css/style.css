@@ -13,7 +13,7 @@ body, html{
     line-height: 16px;
     font-family: sans-serif;
 
-    background-image: url('/images/sht.png');
+    background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/linedpaper.png);
 }
 
 ul{
@@ -33,7 +33,7 @@ ul{
     max-width: 962px;
     min-height: 1000px;
     margin: auto;
-    background: white;
+    /*background: white;*/
     width: 80%;
 } 
 

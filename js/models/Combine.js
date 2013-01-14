@@ -6,13 +6,13 @@ var Combine = Backbone.Model.extend({
         "notes"             : undefined,
         "creationDate"      : "creation date",
         "name"              : undefined,
-        "imgId"             : undefined,
+        "imgID"             : undefined,
         "sex"               : undefined,
         "category"          : undefined
     },
 
     initialize: function(){
-        this.set("elements", new CombineElementsCollection());
+        this.set("elements", {});
 
         // this.get("elements").on("add", this.elementAdded)
         // this.get("elements").on("reset", this.elementsCreated)

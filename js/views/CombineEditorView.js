@@ -7,29 +7,35 @@ var CombineEditorView = Backbone.View.extend({
         "click #newCombineButton": "createCombine",
         "click .combine-image-wrapper": "addCombineElement"
     },
+
     initialize: function(){
         
-        _.bindAll(this, "render", "uploadImage", "createCombine", "addCombineElement");
+        _.bindAll(this, "render", "uploadImage", "createCombine", "addCombineElement", "addNewElement", "removeElement");
 
+        this.on("addNewElement", this.addNewElement, this);
+        this.on("removeElement", this.removeElement, this);
         this.render();
+
+        var self = this;
+        //need another products collection which does not reset
+        //and append every time userRecordCollection fetc
+        this.userRecords = new UserRecordCollection();
+
+        window.userRecordCol.on("reset", function(c){
+            self.userRecords.add(c.models);
+            // console.log("reset", c, self.userRecords.length);
+        })
     },
 
     render: function(){
 
+        console.log(this.model.attributes);
         this.$el.html(_.template($("#combineEditorViewTemplate").html())(this.model.attributes));
 
         SI.Files.stylize(this.$el.find("#imgUpload")[0]);
         _.each($("#imgUpload"), function (ell, idx) {
             SI.Files.stylize(ell);
         });
-        // 
-        // 
-        // console.log("ajaxed form");
-        // $("#combineImageForm", this.el).ajaxForm({
-        //     success: function(data){
-        //         console.log("may may be");
-        //     }
-        // });
     },
 
     uploadImage: function(e){
@@ -37,7 +43,6 @@ var CombineEditorView = Backbone.View.extend({
         var self = this;
          $("#combineImageForm", this.el).ajaxSubmit(function(resp){
 
-            console.log("dear lord");
             var srcText =JSON.parse(resp).id;
             //window.combineImageAddress = srcText
             window.combineImageId = srcText;
@@ -80,13 +85,13 @@ var CombineEditorView = Backbone.View.extend({
 
                 console.log("creating new combine model");
                 
-                window.combine = new Combine();
-                combine.set("imgID", combineImageId);
-                combine.set("imgSrc", combineImageId);
-                combine.set("notes", $("#combineNotes").val());
-                combine.set("sex", $("#combineSex > option:selected").val());
-                combine.set("category", $("#combineCategory > option:selected").val());
-                combine.id = resp.id;
+                // window.combine = new Combine();
+                self.model.set("imgID", combineImageId);
+                self.model.set("imgSrc", combineImageId);
+                self.model.set("notes", $("#combineNotes").val());
+                self.model.set("sex", $("#combineSex > option:selected").val());
+                self.model.set("category", $("#combineCategory > option:selected").val());
+                self.model.id = resp.id;
 
                 /*
                     render info message
@@ -94,6 +99,7 @@ var CombineEditorView = Backbone.View.extend({
                 $("#infoMessage>span", self.el).html("Kombin başarıyla yaratıldı");
                 $("#infoMessage", self.el).show();
                 $("#title").show();
+
                 /*
                     clear form on right side
                  */
@@ -104,6 +110,11 @@ var CombineEditorView = Backbone.View.extend({
 
     addCombineElement: function(e){
         
+        if(!$(e.target).is("img")){
+            return;
+        }
+        
+        var self = this;
         /*
             calculate mouse position relative to target
             if image laoded ofcourse
@@ -112,11 +123,97 @@ var CombineEditorView = Backbone.View.extend({
         if(window.combineImageId!==undefined){
             var parentOffset = $(e.target).offset(); 
 
-            var relX = e.pageX - parentOffset.left;
-            var relY = e.pageY - parentOffset.top;
+            /*
+                calculate relative distance according to X and Y
+             */
+            self.relX = e.pageX - parentOffset.left;
+            self.relY = e.pageY - parentOffset.top;
+
 
             $("#userProductsWindow").modal("show");
         }
+    },
+
+    addNewElement: function(productId){
+
+        if(window.newCombineID===undefined){
+            alert("kombin yaratılmadı");
+            return;
+        }
+        var productId = $("div.selected").attr("id");
+
+        //set relX and relY attributes of model
+        var product = this.userRecords.get(productId);
+        product.set("relX", this.relX);
+        product.set("relY", this.relY);
+
+        console.log("evet", product.attributes);
+
+        $(".combine-image-wrapper", this.el).append(_.template($("#imagePlacerTemplate").html())(product.attributes));
+
+        /*
+            add new product to sidebar as seperate models
+         */
+        var ce = product.attributes;
+        ce["combineId"] = window.newCombineID;
+        ce.id;
+
+
+        /*
+            create new combine element model
+         */
+        var cel = new CombineElement();
+        cel.set("combineId", window.newCombineID);
+        cel.set("imageUrl", product.get("imageUrl"));
+        cel.set("sourceUrl", product.get("sourceUrl"));
+        cel.set("note", product.get("note"));
+        cel.set("relX", product.get("relX"));
+        cel.set("relY", product.get("relY"));
+        cel.set("price", product.get("price"));
+        cel.set("productId", productId);
+        /*
+            create view of this model
+
+            this way model's view will be responsible for operations
+         */
+        var celv = new CombineElementEditableView({
+            model: cel
+        });
+
+        //add to window.combine elements collection
+        this.model.get("elements")[productId] = cel;
+        //console.log(this.model.get("elements"));
+
+        $("#combineOperations").addClass("combine-elements-list");
+        $("#combineOperations").append(celv.el);
+
+        console.log("this is cel", cel);
+        //create new CombineElement model with extra combineId attribute (window.newCombineId)
+        
+        // console.log(productId, this.relX, this.relY, this.userRecords.get(productId).attributes);
+
+        // $(".combine-image-wrapper", this.el).append('<div class="image-placer" style="left:'+this.relX+
+        //     'px;top:'+this.relY+'px;">o</div>');
+
+        /*
+            add black imagemap
+         */
+        
+    },
+
+    removeElement: function(productId) {
+        console.log("removing", productId);
+        this.model.get("elements")[productId] = null;
+
+        //replace images on modal box
+        $(".catalog-image-wrapper", "#pr_"+productId)
+        .removeClass("listed")
+        .prependTo("#"+productId);
+        //remove item on right
+        $("#pr_"+productId).remove();
+        //remove product image place
+        $("#ip_"+productId).remove();
+
     }
 
 });
