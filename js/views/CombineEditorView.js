@@ -5,12 +5,14 @@ var CombineEditorView = Backbone.View.extend({
     events: {
         "change #imgUpload": "uploadImage",
         "click #newCombineButton": "createCombine",
-        "click .combine-image-wrapper": "addCombineElement"
+        "click .combine-image-wrapper": "addCombineElement",
+        "click #updateCombine": "updateCombine"
     },
 
     initialize: function(){
         
-        _.bindAll(this, "render", "uploadImage", "createCombine", "addCombineElement", "addNewElement", "removeElement");
+        _.bindAll(this, "render", "uploadImage", "createCombine", 
+            "addCombineElement", "addNewElement", "removeElement", "updateCombine");
 
         this.on("addNewElement", this.addNewElement, this);
         this.on("removeElement", this.removeElement, this);
@@ -98,8 +100,9 @@ var CombineEditorView = Backbone.View.extend({
                  */
                 $("#infoMessage>span", self.el).html("Kombin başarıyla yaratıldı");
                 $("#infoMessage", self.el).show();
+                $("#action-info", self.el).show();
                 $("#title").show();
-
+                $("#updateCombineWrapper").show();
                 /*
                     clear form on right side
                  */
@@ -163,21 +166,22 @@ var CombineEditorView = Backbone.View.extend({
             create new combine element model
          */
         var cel = new CombineElement();
-        cel.set("combineId", window.newCombineID);
-        cel.set("imageUrl", product.get("imageUrl"));
-        cel.set("sourceUrl", product.get("sourceUrl"));
-        cel.set("note", product.get("note"));
+        // product.set("combineId", window.newCombineID);
+        // cel.set("imageUrl", product.get("imageUrl"));
+        // cel.set("sourceUrl", product.get("sourceUrl"));
+        // cel.set("note", product.get("note"));
         cel.set("relX", product.get("relX"));
         cel.set("relY", product.get("relY"));
-        cel.set("price", product.get("price"));
-        cel.set("productId", productId);
+        // cel.set("price", product.get("price"));
+        cel.set("recordId", productId);
+        cel.set("combineId", window.newCombineID);
         /*
             create view of this model
 
             this way model's view will be responsible for operations
          */
         var celv = new CombineElementEditableView({
-            model: cel
+            model: product
         });
 
         //add to window.combine elements collection
@@ -214,6 +218,31 @@ var CombineEditorView = Backbone.View.extend({
         //remove product image place
         $("#ip_"+productId).remove();
 
+    },
+
+    updateCombine: function(){
+        //create combine element list -- not null
+        var values = _.values(this.model.get("elements"));
+        var actualValues = [];
+        _.each(values, function(val){
+            if(val!==null){
+                actualValues.push(val.attributes);
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/server/combines/update",
+            data: {
+                combineId: window.newCombineID,
+                elements: JSON.stringify(actualValues)
+            },
+
+            success: function(res){
+                console.log("succes update", res);
+            }            
+        });
     }
 
 });

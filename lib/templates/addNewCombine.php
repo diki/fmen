@@ -233,7 +233,7 @@
     </script>
 
     <script type="text/template" id="combineElementEditableView">
-        <div class="product-item" id="pr_<%=productId%>">
+        <div class="product-item" id="pr_<%=id%>">
             <!-- <img src="<%=imageUrl%>" style="float:left;"/> -->
 
             <div class="product-item-info">
@@ -290,6 +290,10 @@
 
             <div id="action-info" style="display: none">
                 Kombin resmi üzerine tıklayarak ürün kataloğunuzdan ürün ekleyin
+            </div>
+
+            <div id="updateCombineWrapper" style="display: none;">
+                <button id="updateCombine">Kombini Kaydet</button>
             </div>
 
             <ul style="list-style: none;" class="combine-attr-list" id="combineOperations">

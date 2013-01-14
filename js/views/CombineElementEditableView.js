@@ -21,14 +21,14 @@ var CombineElementEditableView = Backbone.View.extend({
         /*
             get image el from modal box this way image will not be loaded again
          */
-        var imgEl = $("#"+this.model.get("productId") + " .catalog-image-wrapper")
+        var imgEl = $("#"+this.model.id + " .catalog-image-wrapper")
         .addClass("listed");
         
         $(".product-item", this.el).prepend(imgEl);
     },
 
     removeProduct: function(){
-        window.combineEditorView.trigger("removeElement", this.model.get("productId"));
+        window.combineEditorView.trigger("removeElement", this.model.id);
     }
 
 });
