@@ -172,6 +172,8 @@ $app->post('/user/login', function () use ($app){
             $_SESSION['name'] =  $user['name'];
             $_SESSION['surname'] = $user['surname'];
             $_SESSION['profiled'] = $user['profiled'];
+            $_SESSION['id'] = $user['id'];
+            
             //set cookie
             //$app->setCookie('_gstun', $user['username']);
            // setcookie('gstun', $user['username']);

@@ -220,6 +220,9 @@ var CombineEditorView = Backbone.View.extend({
 
     },
 
+    /*
+        add elements on right side to combine element
+     */
     updateCombine: function(){
         //create combine element list -- not null
         var values = _.values(this.model.get("elements"));
@@ -233,7 +236,7 @@ var CombineEditorView = Backbone.View.extend({
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/server/combines/update",
+            url: "/server/combines/updateElements",
             data: {
                 combineId: window.newCombineID,
                 elements: JSON.stringify(actualValues)

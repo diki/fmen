@@ -43,7 +43,8 @@
                 "note" => $notes,
                 "sex" => $sex,
                 "category" => $category,
-                "creation_date" => $creation_date
+                "creation_date" => $creation_date,
+                "owner" => $_SESSION['id']
             );
 
             $res = DB::insert("combines", $newCombine, true);
@@ -57,7 +58,7 @@
         }
     });
 
-    $app->post('/server/combines/update', function () use ($app){
+    $app->post('/server/combines/updateElements', function () use ($app){
         if(isset($_SESSION['username']) && $_SESSION['username']){
             $req = $app->request();
             $response = $app->response();
@@ -66,16 +67,31 @@
             $combineId = $req->params("combineId");
             $elements = json_decode($req->params('elements'), true);
 
-            //first delete all records related to this combine id on combine_elements table
-            $delQuery = "DELETE from combine_elements WHERE combineId='".$combineId."'";
-            DB::query($delQuery);
+            $combines = DB::read("SELECT * from combines  WHERE id=':combineId'", $combineId);
 
-            //then insert new elements
-            foreach ($elements as $el) {
-                DB::insert("combine_elements", $el, true);
+            //if not empty
+            if (!empty($combines->result)) {
+                //and belongs to this user
+                $c = $combines->result;
+                $combine = $c[0];
+
+                if($combine['owner']==$_SESSION['id'] && isset($_SESSION['id'])){
+                    //first delete all records related to this combine id on combine_elements table
+                    $delQuery = "DELETE from combine_elements WHERE combineId='".$combineId."'";
+                    DB::query($delQuery);
+
+                    //then insert new elements
+                    foreach ($elements as $el) {
+                        DB::insert("combine_elements", $el, true);
+                    }
+                    echo json_encode(array('success'=>true));
+                } else {
+                    echo json_encode(array('success'=>false));
+                }
+            } else {
+                echo json_encode(array('success'=>false));
             }
-            echo json_encode(array('success'=>true));
-            //var_dump($res);
+                        
         } else {
             $app->redirect(HTTP_URL);
         }
