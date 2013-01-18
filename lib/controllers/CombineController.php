@@ -12,14 +12,21 @@
             $combine = $rows[0];
             $userId = $app->getEncryptedCookie('_gstuk');
 
+            $combineId = $combine['id'];
+            //collect elements of this combine
             $view = $app -> view();
+
+            $query = "SELECT * from combine_elements ce, user_record ur where ce.recordId=ur.id and ce.combineId='".$combineId ."'";
+            $r = DB::read($query)->result;
+            $elements = $r;
+
             if($combine['owner']==$userId){
                 $title = "Edit combine";
-                $view -> setData(array('title' => $title));
+                $view -> setData(array('title' => $title, "combine" => $combine, "elements" => $elements));
                 $app->render('editCombine.php');
             } else {
                 $title = "kombin-".$combine['note'];
-                $view -> setData(array('title' => $title));
+                $view -> setData(array('title' => $title, "combine" => $combine, "elements" => $elements));
                 $app->render('viewCombine.php');
             }
         } else {

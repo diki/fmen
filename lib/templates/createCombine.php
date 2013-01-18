@@ -234,8 +234,6 @@
 
     <script type="text/template" id="combineElementEditableView">
         <div class="product-item" id="pr_<%=id%>">
-            <!-- <img src="<%=imageUrl%>" style="float:left;"/> -->
-
             <div class="product-item-info">
                 <a class="remove-product">X</a>
                 <span><%=note%>&nbsp;</span>
