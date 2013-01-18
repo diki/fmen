@@ -1,8 +1,10 @@
 <div id="header" style="" class="header-nav">
 
     <div class="header-nav-container">
-
+        
+        {% include 'userLogin.php' %}
         <div class="logo">ginkatego</div>
+
 
         <div class="sep"></div>
         <ul class="header-nav-list">

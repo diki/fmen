@@ -1,7 +1,30 @@
 <?php 
 
-    $app->get('/combines/:type', function ($type) use ($app){
-        echo $type;
+    $app->get('/combines', function () use ($app){
+        
+        $req = $app->request();
+        $id = $req->params("cid");
+
+        $res = DB::read("SELECT * from combines  WHERE id=':id'", $id);
+
+        if(!empty($res->result)){
+            $rows = $res->result;
+            $combine = $rows[0];
+            $userId = $app->getEncryptedCookie('_gstuk');
+
+            $view = $app -> view();
+            if($combine['owner']==$userId){
+                $title = "Edit combine";
+                $view -> setData(array('title' => $title));
+                $app->render('editCombine.php');
+            } else {
+                $title = "kombin-".$combine['note'];
+                $view -> setData(array('title' => $title));
+                $app->render('viewCombine.php');
+            }
+        } else {
+            $app->redirect(HTTP_URL);
+        }
     });
 
     $app->get('/server/combines/manage', function () use ($app){
@@ -15,7 +38,7 @@
             $view = $app -> view();
             $view -> setData(array('title' => $title));
             
-            $app->render('addNewCombine.php');
+            $app->render('createCombine.php');
         } else {
             $app->redirect(HTTP_URL);
         }

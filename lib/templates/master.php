@@ -6,7 +6,7 @@
         {# meta tags and styles #}
         {% include 'head.php' %}
 
-        <title>{% block title %}{% endblock %} - My Webpage</title>
+        <title>{% block title %}{% endblock %}</title>
     </head>
 
     <body>

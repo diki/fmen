@@ -178,6 +178,9 @@ $app->post('/user/login', function () use ($app){
             //$app->setCookie('_gstun', $user['username']);
            // setcookie('gstun', $user['username']);
             $app->setEncryptedCookie('_gstun', $user['username']);
+
+            //set user_id cookie
+            $app->setEncryptedCookie('_gstuk', $user['id']);
             //echo json_encode(array('success'=>true, 'redirect_url'=>'/glim'));
             $app->redirect(HTTP_URL);
             die();
