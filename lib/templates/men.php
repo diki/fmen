@@ -10,7 +10,7 @@
 
     </style>
     <div class="content-header">
-        <div class="wrapper">
+        <div class="wrapper" style="background: white;">
             <div class="page-title">
                 Erkek kombinleri
             </div>
@@ -78,16 +78,11 @@
 
     <script type="text/template" id="combine-list-item">
         <li>
-            <div class="drop-shadow">
-                <img src="http://s3.amazonaws.com/ginkatego/uploads/<%=imgId%>" />
-                <h2><%=name%></h2>
-            </div>
-            <div class="content">
+            <!-- <div class="drop-shadow"> -->
+                <img src="http://s3.amazonaws.com/ginkatego/uploads/<%=imgId%>" style="width:200px;"/>
                 <h2><%=name%></h2>
                 <p><%=note%></p>
-            </div>
-            <br style="clear: both;"/>
-            <hr/>
+            <!-- </div> -->
         </li>
     </script>
 

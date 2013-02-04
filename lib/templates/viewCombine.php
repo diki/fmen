@@ -70,29 +70,28 @@
     </style>
     
 
-    <div style="padding-top: 24px;">
         
         <!-- content inside is filled by backbone view -->
         <div id="combineEditor" style="background: white;">
        
             
 
-        <div class="span6 img-container" id="combineImgArea" style="">
+        <div class="span6 img-container" id="combineImgArea" style="margin-top: 18px;">
             <div class="combine-image-wrapper" style="display: block;">
+                <img id="combineImage" src="http://s3.amazonaws.com/ginkatego/uploads/{{combine['imgId']}}" style="width: 380px;height: 570px;">        
                 
-                    <img id="combineImage" src="http://s3.amazonaws.com/ginkatego/uploads/1358468591_570x570.jpeg" style="width: 380px;height: 570px;">        
-                
-            
-        <div id="ip_{{combine['id']}}" class="image-placer" style="left:266px;top:124px;">
-                <span style="display: block">o</span>
-                <div class="product-hover-view small">
-                    <img src="{{combine['imgUrl']}}" style="float:left;">
-                    <div class="product-hover-info">
-                        <span><b>34.00</b> TL</span>
-                        <a href="http://www.trendyol.com/Bershka/ButikDetay/12919?c=Notset" target="_blank">Mağazaya git</a>
+            {% for element in elements %}
+                <div id="ip_{{element['recordId']}}" class="image-placer" style="left:{{element['relX']}}px;top:{{element['relY']}}px;">
+                    <span style="display: block">o</span>
+                    <div class="product-hover-view small">
+                        <img src="{{element['imageUrl']}}" style="float:left;">
+                        <div class="product-hover-info">
+                            <span><b>{{element['price']}}</b> TL</span>
+                            <a href="{{element['sourceUrl']}}" target="_blank">Mağazaya git</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
 
         </div>
@@ -107,7 +106,8 @@
                     
                     <li>
                         <div class="catalog-image-wrapper listed">
-                            <img src="http://s.trendyol.com/Assets/ProductImages/12890/08305201812028_1_org.jpg" style="margin: 0px;" width="100" height="150">
+                            <div style="width: 150px; height: 150px; border: 1px solid black;">
+                                <img src="{{element['imageUrl']}}" style="width:{{element['width']}}px; height:{{element['height']}}px;margin:{{75-element['height']/2}}px 0;" />
                             </div>
                             <div class="product-item-info">
                                 <span>i dunno know&nbsp;</span>

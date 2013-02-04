@@ -4,7 +4,7 @@
         
         $req = $app->request();
         $id = $req->params("cid");
-
+        
         $res = DB::read("SELECT * from combines  WHERE id=':id'", $id);
 
         if(!empty($res->result)){

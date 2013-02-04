@@ -174,9 +174,7 @@ $app->post('/user/login', function () use ($app){
             $_SESSION['profiled'] = $user['profiled'];
             $_SESSION['id'] = $user['id'];
             
-            //set cookie
-            //$app->setCookie('_gstun', $user['username']);
-           // setcookie('gstun', $user['username']);
+            //set user name cookie
             $app->setEncryptedCookie('_gstun', $user['username']);
 
             //set user_id cookie
@@ -193,7 +191,9 @@ $app->post('/user/login', function () use ($app){
 });
 
 $app->post('/user/logout', function () use ($app){
-
+    //clear cookies
+    $app->deleteCookie('_gstun');
+    $app->deleteCookie('_gstuk');
     session_destroy();
     $app->redirect(HTTP_URL);
 

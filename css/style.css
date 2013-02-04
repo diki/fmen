@@ -13,7 +13,7 @@ body, html{
     line-height: 16px;
     font-family: sans-serif;
 
-    background-image: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/linedpaper.png);
+    background-image: url(../images/gridme.png);
 }
 
 ul{
@@ -113,15 +113,16 @@ ul{
 
 .co-listing {
     list-style: none;
-    margin:0 45px;
-    padding-top: 32px;
+    overflow: hidden;
+    text-align: center;
 }
 
 .co-listing li{
     /*float: left; */
-    width: 100%;
+    width: 33%;
     overflow: hidden;
     margin: 16px 0;
+    float: left;
 }
 
 .co-listing li img{
@@ -135,7 +136,7 @@ ul{
     padding:0 12px;
 }
 
-.co-listing li:nth-child(even) div.drop-shadow{
+/*.co-listing li:nth-child(even) div.drop-shadow{
     float: right;
 }
 
@@ -149,7 +150,7 @@ ul{
 
 .co-listing li:nth-child(even) div.content {
     float: right;
-}
+}*/
 
 .content h2 {
     background:transparent url(../images/lines.png) repeat top left;
@@ -169,8 +170,8 @@ ul{
    content:"";
    position:absolute;
    z-index:-1;
-   bottom:15px;
-   left:10px;
+   bottom:96px;
+   left:3px;
    width:50%;
    height:20%;
    max-width:300px;
@@ -184,7 +185,7 @@ ul{
 }
 
 .drop-shadow:after{
-   right:10px;
+   right:74px;
    left:auto;
    -webkit-transform:rotate(3deg);
    -moz-transform:rotate(3deg);
@@ -216,7 +217,7 @@ ul{
     font-weight: 300;
     /*font-family: 'Playfair Display', serif;*/
 
-    font-size: 24px;
+    font-size: 47px;
     text-shadow: 0px 0px 1px black;
     /*text-transform: uppercase;*/
 
@@ -224,6 +225,9 @@ ul{
     width: 30%;
 
     font-family: 'PT Sans Narrow' !important;
+    width: 100%;
+    text-align: center;
+    line-height: 64px;
     /*font-family: 'Julius Sans One', sans-serif;*/
 }
 

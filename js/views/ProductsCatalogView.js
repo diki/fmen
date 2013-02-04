@@ -17,6 +17,7 @@ var ProductsCatalogView = Backbone.View.extend({
         this.offset = 0;
         this.limit = 12;
 
+        //fetching window.userRecordCol
         this.collection.fetch({
             data: {
                 offset: this.offset*this.limit,
@@ -28,6 +29,7 @@ var ProductsCatalogView = Backbone.View.extend({
         this.collection.on("reset", this.render);
 
         //bind click event to modal box button
+        //triggers combineEditorView addNewElement with slected product id
         $("#addProductFromcatalog").click(function(){
             var productId = $(".product-catalog-wrapper.selected").attr("id");
             if(productId===undefined){
@@ -79,6 +81,9 @@ var ProductsCatalogView = Backbone.View.extend({
                 imageObj.style.margin = topMargin+"px 0";
                 imageObj.width = imageWidth;
                 imageObj.height = imageHeight;
+
+                m.set("width", imageWidth);
+                m.set("height", imageHeight);
             }
 
             $(".product-list", self.el).append(_.template(productCatalogItemTemplate)(m.attributes));

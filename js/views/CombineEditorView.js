@@ -146,6 +146,8 @@ var CombineEditorView = Backbone.View.extend({
         var productId = $("div.selected").attr("id");
 
         //set relX and relY attributes of model
+        //get product model from userRecords with given id 
+        //triggered by ProductsCatalogView
         var product = this.userRecords.get(productId);
         product.set("relX", this.relX);
         product.set("relY", this.relY);
@@ -163,16 +165,13 @@ var CombineEditorView = Backbone.View.extend({
 
 
         /*
-            create new combine element model
+            built new combine element model
          */
         var cel = new CombineElement();
-        // product.set("combineId", window.newCombineID);
-        // cel.set("imageUrl", product.get("imageUrl"));
-        // cel.set("sourceUrl", product.get("sourceUrl"));
-        // cel.set("note", product.get("note"));
+        cel.set("width", product.get("width"));
+        cel.set("height", product.get("height"));
         cel.set("relX", product.get("relX"));
         cel.set("relY", product.get("relY"));
-        // cel.set("price", product.get("price"));
         cel.set("recordId", productId);
         cel.set("combineId", window.newCombineID);
         /*
