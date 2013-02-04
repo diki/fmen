@@ -79,7 +79,7 @@
     <script type="text/template" id="combine-list-item">
         <li>
             <!-- <div class="drop-shadow"> -->
-                <img src="http://s3.amazonaws.com/ginkatego/uploads/<%=imgId%>" style="width:200px;"/>
+                <img src="http://s3.amazonaws.com/ginkatego/uploads/<%=imgId%>" style="width:180px;"/>
                 <h2><%=name%></h2>
                 <p><%=note%></p>
             <!-- </div> -->
