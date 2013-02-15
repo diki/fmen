@@ -12,6 +12,8 @@
     background: -o-linear-gradient(top, #383838 0%, black 100%);
     background: -ms-linear-gradient(top, #383838 0%, black 100%);
     background: linear-gradient(top, #383838 0%, black 100%);
+
+    
 }
 
 .header-nav-container {

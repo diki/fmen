@@ -21,7 +21,7 @@
         } 
         $view -> setData(array('title' => $title));
 
-        $app->render('home.php');
+        $app->render('home2.php');
 
     });
 

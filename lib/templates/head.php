@@ -5,8 +5,8 @@
 <!-- <base href="http://localhost:8090/ginkatego/" /> -->
 
 <link rel="stylesheet" href="/css/normalize.css" type="text/css" />
-<link rel="stylesheet" href="/css/style.css?ver=1" type="text/css" />
-<link rel="stylesheet" href="/css/header2.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="/css/style5.css?ver=1" type="text/css" />
+<link rel="stylesheet" href="/css/header4.css?ver=1" type="text/css" />
 
 <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
 

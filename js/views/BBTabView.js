@@ -34,7 +34,7 @@ var BBTabView = Backbone.View.extend({
     createToolbar: function(tabs){
         console.log("creating tabs el is", this.$el);
 
-        var ul = $('<ul class="header-nav-list bb-tab-links"></ul>');
+        var ul = $('<ul class="header-nav-list bb-tab-links" style="z-index:999999"></ul>');
 
         console.log("created"); 
         //create menu items

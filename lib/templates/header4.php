@@ -24,7 +24,7 @@
                 <a class="header-nav-list-item-link" href="/ginkatego/about">Hakkımızda</a>
             </li> --> 
 
-            <li style="float: right;margin-right: 17px;" class="header-nav-list-item">
+<!--             <li style="float: right;margin-right: 17px;" class="header-nav-list-item">
                 <a class="smaller header-nav-list-item-link" href="/ginkatego/blog">Arama<i style="margin-left: 12px;" class="icon-search"></i></a>
             </li>
             <li style="width: 2px; margin: 10px 12px 0 12px; float: right; font-size: 12px; ">
@@ -33,7 +33,7 @@
             
             <li style="float: right;margin-right: 17px;" class="header-nav-list-item">
                 <a class="smaller header-nav-list-item-link" href="/ginkatego/blog">eBültene üye olun<i style="margin-left: 12px;" class="icon-envelope"></i></a>
-            </li>             
+            </li>  -->            
         </ul>
     </div>
 </div> 
