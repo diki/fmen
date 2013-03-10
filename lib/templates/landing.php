@@ -27,35 +27,84 @@
         }
 
         #stage {
-            z-index: 2000098;
+            z-index: 1000;
             position: relative;
+        }
+
+        .box {
+            z-index: 110;
         }
     </style>
     <body>
         
         {% include 'header4.php' %}
-
-        <script src="js/lib/jquery.js" type="text/javascript"></script>
-
+        
         <div class="bg-container">
         </div>
-
-        <h1 style="margin-top:120px;font-weight:bold;width: 100%; text-align:center;color: white;position: relative; z-index: 9999;line-height:72px;text-shadow: 1px 1px 16px black;">web'in en güzel 
+        <h1 style="padding:30px 0; background:rgba(0,0,0,0.7);margin-top:70px;font-weight:bold;width: 100%; text-align:center;color: white;position: relative; z-index: 2;line-height:72px;text-shadow: 1px 1px 16px black;">web'in en güzel 
             <br/>
-            <img style="opacity: 1; margin-top: 6px;"src="/images/dikikom2.png"/><span>leri</span></h1>
+            <img style="opacity: 1; margin-top: 6px;"src="/images/dikikom2.png"/>
+            <span>leri</span>
+        </h1>
             
         <div id="stage">
         
-<!--             {% include 'userLogin.php' %} -->
-
 
             <div id="content">
               {% block content %}
                 {% endblock %}
             </div>
-            
-
         </div>
+
+        <div class="modal hide fade" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align:center;padding-top:30px;">
+                <a style="display:inline-block; width:200px;" id="fb-login">
+                    <img src="/images/connect-with-facebook.png"/>
+                </a>
+                <a style="display:inline-block; width:200px;margin-left:24px;" id="tw-login">
+                    <img src="/images/connect-with-twitter.png"/>
+                </a>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            //twitter fb login windows
+            //
+            var fbTimer, fbChildWindow;
+            function fbPolling() {
+                if(fbChildWindow && fbChildWindow.closed) {
+                    // The popup has been closed, stop the timer and reload window.
+                    clearInterval(fbTimer);
+                    window.location.href = window.location.href;
+                    // console.log("fb window closed");
+                }
+            }
+            var twTimer, twChildWindow;
+            function twPolling() {
+                if(twChildWindow && twChildWindow.closed) {
+                    // The popup has been closed, stop the timer and reload window.
+                    clearInterval(twTimer);
+                    window.location.href = window.location.href;
+                    // console.log("fb window closed");
+                }
+            }
+            $("#fb-login").click(function(){
+                fbChildWindow  = window.open("/user/fb-login" ,"", 'width=400, height=320');
+                fbTimer = setInterval('fbPolling()', 1000);
+            });
+            //twitter fb login windows
+            $("#tw-login").click(function(){
+                twChildWindow = window.open("/user/twitter-login" ,"", 'width=600, height=320');
+                twTimer = setInterval('twPolling()', 1000);
+            });
+        </script>
         {% block scripts %}
         {% endblock %}
     </body>

@@ -9,6 +9,7 @@
     // include_once 'lib/db.php';
     include_once 'lib/init.php';
 
+    require 'lib/facebook/facebook.php';
     /**
      * Step 2: Instantiate the Slim application
      *
@@ -31,29 +32,25 @@
         'cookies.cipher_mode' => MCRYPT_MODE_CBC
     ));
 
-
-    /**
-     * if user registered with facebook set Session
-     */
-    // $facebook = new Facebook(array(
-    //     'appId' => '546067615425845',
-    //     'secret' => 'c002269023db410abdf731b0a62ef164'
-    // ));
+    $facebook = new Facebook(array(
+            'appId' => '546067615425845',
+            'secret' => 'c002269023db410abdf731b0a62ef164'
+        ));
 
     $user = $facebook->getUser();
+
     if($user){
         try{
             $user_profile = $facebook->api('/me');
+
+            // var_dump($user_profile);
+            // die();
 
             $_SESSION['username'] = $user_profile['name'];
             $_SESSION['name'] =  $user_profile['first_name'];
             $_SESSION['surname'] = $user_profile['last_name'];
             $_SESSION['profiled'] = false;
             $_SESSION['id'] = $user_profile['id'];
-            $_SESSION['fb_logged_in'] = true; 
-
-            //set a cookie indicating that user registered with facebook
-            $app->setEncryptedCookie('_gstuk', $user_profile['id']);
 
         }catch(FacebookApiException $e){
             $user = null;

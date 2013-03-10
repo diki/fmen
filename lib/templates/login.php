@@ -33,6 +33,9 @@
                 </li>                   
             </ul>
         </form>
+
+        <a href="/user/fb-login" id="facebookLogin">Login With Facebook</a>
+        <a href="/user/twitter-login" id="twitterLogin">Login With Twitter</a>
     </div>
 
 {% endblock %}

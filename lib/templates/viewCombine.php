@@ -11,6 +11,7 @@
 <div id="content">
                     
     <link rel="stylesheet" type="text/css" href="/css/products.css">
+    <link rel="stylesheet" href="css/elusive-webfont.css?ver=1" type="text/css" />
     <style>
 
         .left-list {
@@ -50,21 +51,41 @@
         .img-container {
             /*border-right: 2px dashed #E5E5E5;*/
             /*border-radius: 20px;*/
-            height: 600px;
+            /*height: 600px;*/
             position: relative;
-            border: 1px solid #AAA;
+            /*border: 1px solid #AAA;*/
         }
 
         .combine-image-wrapper {
             /*background: none repeat scroll 0 0 #F0F0F2;*/
-            height: 570px;
-            margin-left: 20px;
-            margin-top: 10px;
-            padding: 10px 20px;
+            /*height: 570px;*/
+/*            margin-left: 20px;
+            margin-top: 10px;*/
+            padding: 20px 40px;
+            border:1px solid #AAA;
             position: relative;
             width: 380px;
 
             display: none;
+        }
+
+        .like-combine-big{
+            font-size: 24px;
+            float: right;
+            display: b;
+            display: block;
+            margin-top: -11px;
+            margin-right: 10px;
+            color: #AAA;
+        }
+
+        .like-combine-big:hover {
+            text-decoration: none;
+            color: red;
+        }
+
+        #stage {
+            background: white;
         }
 
     </style>
@@ -72,32 +93,64 @@
 
         
         <!-- content inside is filled by backbone view -->
-        <div id="combineEditor" style="background: white;">
+        <div id="combineEditor" style="background: white;min-height:800px; width:90%; margin: 0 auto;">
        
             
-
-        <div class="span6 img-container" id="combineImgArea" style="margin-top: 18px;">
-            <div class="combine-image-wrapper" style="display: block;">
-                <img id="combineImage" src="http://s3.amazonaws.com/ginkatego/uploads/{{combine['imgId']}}" style="width: 380px;height: 570px;">        
-                
-            {% for element in elements %}
-                <div id="ip_{{element['recordId']}}" class="image-placer" style="left:{{element['relX']}}px;top:{{element['relY']}}px;">
-                    <span style="display: block">o</span>
-                    <div class="product-hover-view small">
-                        <img src="{{element['imageUrl']}}" style="float:left;">
-                        <div class="product-hover-info">
-                            <span><b>{{element['price']}}</b> TL</span>
-                            <a href="{{element['sourceUrl']}}" target="_blank">Mağazaya git</a>
+            <div class="span6 img-container" id="combineImgArea" style="margin-top: 18px;">
+                <div class="combine-image-wrapper" style="display: block;">
+                    <img id="combineImage" src="http://s3.amazonaws.com/ginkatego/uploads/{{combine['imgId']}}">        
+                    
+                {% for element in elements %}
+                    <div id="ip_{{element['recordId']}}" class="image-placer" style="left:{{element['relX']}}px;top:{{element['relY']}}px;">
+                        <span style="display: block">o</span>
+                        <div class="product-hover-view small">
+                            <img src="{{element['imageUrl']}}" style="float:left;">
+                            <div class="product-hover-info">
+                                <span><b>{{element['price']}}</b> TL</span>
+                                <a href="{{element['sourceUrl']}}" target="_blank">Mağazaya git</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+
+            </div>
+
+            <div class="addthis_toolbox addthis_default_style" style="margin-top: 30px;margin-left: -4px;padding-bottom:20px;border-bottom:2px solid #000;">
+                <a style="width:80px;" class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                <a style="width:89px;" class="addthis_button_tweet"></a>
+                <a style="width:69px;" class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                <a class="addthis_button_pinterest_pinit"></a>
+                <a class="like-combine-big"><i class="icon-heart"></i></a>
+            </div>
+            
+            <div class="fb-comments" style="margin-top: 30px;margin-left: -7px;" data-href="http://www.pindistan.com/combines?cid={{combine['id']}}" data-width="470" data-num-posts="10"></div>
+            </div>
         </div>
+        <!-- AddThis Button BEGIN -->
 
-        </div>
+<!--
+<div class="addthis_toolbox addthis_default_style" style="margin-top: 30px;margin-left: -4px;padding-bottom:20px;border-bottom:2px solid #000;">
+<a class="fb-like" data-href="http://www.pindistan.com/combines?cid={{combine['id']}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></a>
+<a>
+<div class="g-plusone" data-size="small"></div>
+</a>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<a style="width:89px;" class="addthis_button_tweet"></a>
+<a data-pin-config="beside" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.pindistan.com%2Fcombines%3Fcid%3D{{combine['id']}}&media=http%3A%2F%2Fs3.amazonaws.com%2Fginkatego%2Fuploads%2F{{combine['imgId']}}" data-pin-do="buttonPin" ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
+
+<a class="like-combine-big"><i class="icon-heart"></i></a>
+</div> -->
 
 
-        <div class="span6 left-container">
+
+
+        <div class="span4 left-container">
 
             <ul style="list-style: none;" class="combine-attr-list combine-elements-list" id="combineOperations">
 
@@ -124,6 +177,11 @@
         <br style="clear: both">
     </div>
 
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f82111686f469"></script>
+
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+<!-- AddThis Button END -->
     </div>
 
 {% endblock %}

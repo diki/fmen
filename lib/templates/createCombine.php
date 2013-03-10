@@ -41,7 +41,7 @@
 
         #combineImageForm {
             margin-left: 100px;
-            margin-top: 82px;
+            /*margin-top: 82px;*/
         }
 
         #combineElements {
@@ -64,14 +64,14 @@
         .img-container {
             /*border-right: 2px dashed #E5E5E5;*/
             /*border-radius: 20px;*/
-            height: 600px;
+            /*height: 600px;*/
             position: relative;
             border: 1px solid #AAA;
         }
 
         .combine-image-wrapper {
             /*background: none repeat scroll 0 0 #F0F0F2;*/
-            height: 570px;
+            /*height: 570px;*/
             margin-left: 20px;
             margin-top: 10px;
             padding: 10px 20px;
@@ -254,9 +254,9 @@
         <div class="span6 img-container" id="combineImgArea" style="">
             <div class="combine-image-wrapper">
                 <% if(imgID===undefined) { %>
-                    <img id="combineImage" src="" style="width: 380px;height: 570px;" />        
+                    <img id="combineImage" src=""/>
                 <% } else { %>
-                    <img id="combineImage" src="/ginkatego/uploaded-images/<%=imgID%>" style="width: 380px;height:570px;" />
+                    <img id="combineImage" src="/ginkatego/uploaded-images/<%=imgID%>" />
                 <% } %>
             </div>
             <form id="combineImageForm" action="/images" method="POST" enctype="multipart/form-data">

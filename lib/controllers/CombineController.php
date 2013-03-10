@@ -177,5 +177,22 @@
     //     }
 
     // });    
+    $app->post('/server/combines/increaseLike', function () use ($app){ 
 
+        $req = $app->request();
+        $response = $app->response();
+
+        if(isset($_SESSION['id'])){
+
+            $query = 'UPDATE combines SET likes=likes + 1 where id="'.$req->params('id'). '"';
+            $res = DB::query($query);
+            if($res){
+                $response->body(json_encode(array('success'=>true)));
+            } else {
+                $response->status(400);
+            }
+        } else {
+            $response->status(401);
+        }
+    });
 ?>

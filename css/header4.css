@@ -54,12 +54,12 @@
 }
 
 .header-nav-container {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     padding: 0 10px;
     position: relative;
-    width: 86%;
+    /*width: 86%;*/
     padding: 0 19px;
-    max-width: 980px
+    /*max-width: 980px*/
     /*width: 960px;*/
 
 }

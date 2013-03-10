@@ -49,8 +49,27 @@ var CombineEditorView = Backbone.View.extend({
             //window.combineImageAddress = srcText
             window.combineImageId = srcText;
             
-            $("#combineImage", self.el).attr("src", "http://s3.amazonaws.com/ginkatego/uploads/"+srcText);
+/*            var imageObj = new Image();
+            imageObj.src = "http://s3.amazonaws.com/ginkatego/uploads/"+srcText;
+            var imageWidth = 0;
+            var imageHeight = 0;
+            var topPadding = 0;
+            var leftPadding = 0;
 
+            imageObj.onload = function(){
+                var topPadding = (570 - imageObj.height)/2;
+                var leftPadding = (380-imageObj.width)/2;
+                imageObj.style.padding = topPadding+"px " + leftPadding + "px";
+                $(".combine-image-wrapper", self.el).rem
+            }*/
+
+            $("#combineImage", self.el).attr("src", "http://s3.amazonaws.com/ginkatego/uploads/"+srcText);
+            $("#combineImage", self.el).load(function(){
+                var topPadding = Math.abs((570 - $(this).height())/2)+10;
+                var leftPadding = Math.abs((380 - $(this).width())/2)+20;
+                console.log(topPadding, leftPadding);
+                // $(".combine-image-wrapper", self.el).css("padding", topPadding+"px "+leftPadding+"px");
+            });
             $("#combineImageForm label.cabinet", self.el).width(100);
             $("#combineImageForm label.cabinet", self.el).height(20);
 

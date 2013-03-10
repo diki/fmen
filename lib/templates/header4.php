@@ -3,7 +3,9 @@
     <div class="header-nav-container">
         
         {% include 'userLogin.php' %}
-        <div class="logo">ginkatego</div>
+        <div class="logo">
+            <a href="/">ginkatego</a>
+        </div>
 
 
         <!-- <div class="sep"></div> -->

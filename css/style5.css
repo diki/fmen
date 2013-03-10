@@ -30,11 +30,13 @@ ul{
 }
 
 #stage {
-    max-width: 962px;
+    max-width: 1140px;
     min-height: 1000px;
     margin: auto;
     /*background: white;*/
-    width: 80%;
+    width: 90%;
+    margin-top: 75px;
+    z-index: 1000;
 } 
 
 
@@ -117,18 +119,20 @@ ul{
     list-style: none;
     overflow: hidden;
     text-align: center;
+    /*text-align: center;*/
+    width: 100%;
 }
 
 .co-listing li{
     /*float: left; */
-    width: 33%;
+    /*width: 24%;*/
     overflow: hidden;
-    margin: 16px 0;
+    /*margin: 16px 0;*/
     float: left;
 }
 
 .co-listing li img{
-    width: 300px;
+    width: 263px;
 }
 
 .co-listing li div.content{
@@ -342,8 +346,8 @@ a.cat {
 }
 
 #tab-view a{
-     text-decoration:none;
-     display: inline-block;
+    text-decoration:none;
+    display: inline-block;
 
     background: white;
     background: -moz-linear-gradient(top,white 0,#e8e8e8 100%);
@@ -358,6 +362,14 @@ a.cat {
     -ms-transition: all 0.27s ease;
     -o-transition: all 0.27s ease;
     transition: all 0.27s ease;
+
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+
+    border: 0;
+    filter: none;
+    color: #909090;
+    padding: 10px 20px;
+    position: relative;
      /*border-right: 1px dashed;*/
 }
 
@@ -376,17 +388,34 @@ a.cat {
     /*margin:.5em;*/
 }
 
-#tab-view a:hover{
-    background: rgba(0,0,0,0.4);
+#tab-view a.passive:hover{
+    
     color: white;
+    background: #b5bdc8; /* Old browsers */
+background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(36%,#828c95), color-stop(100%,#28343b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #b5bdc8 0%,#828c95 36%,#28343b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #b5bdc8 0%,#828c95 36%,#28343b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #b5bdc8 0%,#828c95 36%,#28343b 100%); /* IE10+ */
+background: linear-gradient(to bottom, #b5bdc8 0%,#828c95 36%,#28343b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
      /*border-right: 1px dashed;*/
 }
 
-#tab-view a.active:hover{
-    background: rgba(0,0,0,0.8);
+#tab-view a.active{
+    /*background: rgba(0,0,0,0.8);*/
     color: white;
+    background: #45484d; /* Old browsers */
+background: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #45484d 0%,#000000 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #45484d 0%,#000000 100%); /* IE10+ */
+background: linear-gradient(to bottom, #45484d 0%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
      /*border-right: 1px dashed;*/
 }
+
 
 .category-list {
     list-style: none;
@@ -574,3 +603,58 @@ a.cat {
 }*/
 
 
+
+
+.combine-list-wrapper:hover {
+    box-shadow: inset 0px 0px 2px black;
+    border-radius: 4px;
+}
+
+.combine-list-wrapper {
+    -webkit-transition: all 0.27s ease;
+    -moz-transition: all 0.27s ease;
+    -ms-transition: all 0.27s ease;
+    -o-transition: all 0.27s ease;
+    transition: all 0.27s ease;
+/*
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+}
+.combine-list-item-line {
+/*    -webkit-transition: all 0.57s ease;
+    -moz-transition: all 0.57s ease;
+    -ms-transition: all 0.57s ease;
+    -o-transition: all 0.57s ease;
+    transition: all 0.57s ease;*/
+}
+.combine-list-item-info {
+/*    -webkit-transition: all 0.27s ease;
+    -moz-transition: all 0.27s ease;
+    -ms-transition: all 0.27s ease;
+    -o-transition: all 0.27s ease;
+    transition: all 0.27s ease;*/
+}
+.combine-list-item-info {
+    z-index:0; 
+    color: white; 
+    opacity: 0;
+    position: absolute; 
+    width: 100%;
+    top:0; 
+    left: 0; 
+    height: 25px; 
+    background: rgba(0,0,0,0.8)
+}
+.combine-list-wrapper:hover .combine-list-item-info {
+    opacity: 1;
+}
+
+.combine-list-item-line {
+    /*display: op;*/
+    opacity: 0;
+}
+.combine-list-wrapper:hover .combine-list-item-line {
+    display: block;
+    opacity: 1;
+}

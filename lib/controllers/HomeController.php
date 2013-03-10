@@ -3,12 +3,11 @@
     $app->get('/', function () use ($app){
         
         //if there is a session when coming here
-        
         if(isset($_SESSION['username']) && $_SESSION['username']){
-            //echo "npooooooooooooooooooooooooooo";
             
         }
-        $title = "tilt tieii";
+
+        $title = "title";
         $body = "Home body";
 
         $view = $app -> view();
