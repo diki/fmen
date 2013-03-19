@@ -16,8 +16,6 @@
      * However, we could also pass a key-value array of settings.
      * Refer to the online documentation for available settings.
      */
-
-
     $app = new Slim(array(
         'debug' => true,
         'templates.path' => 'lib/templates',
@@ -31,15 +29,14 @@
         'cookies.cipher_mode' => MCRYPT_MODE_CBC
     ));
 
-
     /**
      * if user registered with facebook set Session
+     * also facebook object starts session at construct
      */
-    // $facebook = new Facebook(array(
-    //     'appId' => '546067615425845',
-    //     'secret' => 'c002269023db410abdf731b0a62ef164'
-    // ));
-
+    $facebook = new Facebook(array(
+        'appId' => FB_APP_ID,
+        'secret' => FB_APP_SECRET
+    ));
     $user = $facebook->getUser();
     if($user){
         try{
@@ -49,7 +46,7 @@
             $_SESSION['name'] =  $user_profile['first_name'];
             $_SESSION['surname'] = $user_profile['last_name'];
             $_SESSION['profiled'] = false;
-            $_SESSION['id'] = $user_profile['id'];
+            $_SESSION['user_id'] = $user_profile['id'];
             $_SESSION['fb_logged_in'] = true; 
 
             //set a cookie indicating that user registered with facebook
@@ -59,17 +56,8 @@
             $user = null;
         }
     }
-    // session_start();
 
-
-
-    /*
-        include models 
-     */
-    // include_once 'lib/models/UserListModel.php';
-    // include_once 'lib/controllers/HomeController.php';
-
-    //GET route
+    //routes
     include_once 'lib/controllers/HomeController.php';
     include_once 'lib/controllers/UserController.php';
     include_once 'lib/controllers/CombineController.php';
@@ -79,6 +67,8 @@
 
     include_once 'lib/controllers/UserRecordController.php';
     include_once 'lib/controllers/UserListController.php';
+    
+    include_once 'lib/controllers/ProfileController.php';
     
 
     /**

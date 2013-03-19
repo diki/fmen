@@ -129,10 +129,17 @@ ul{
     overflow: hidden;
     /*margin: 16px 0;*/
     float: left;
+
+    /*border: 1px solid #aaa;*/
+    /*border-radius: 4px;*/
+    padding: 6px;
+    margin: 2px 4px;
+
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
 }
 
 .co-listing li img{
-    width: 263px;
+    width: 240px;
 }
 
 .co-listing li div.content{
@@ -606,8 +613,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', end
 
 
 .combine-list-wrapper:hover {
-    box-shadow: inset 0px 0px 2px black;
-    border-radius: 4px;
+/*    box-shadow: inset 0px 0px 2px black;
+    border-radius: 4px;*/
+    /*background: black;*/
+    /*color: white;*/
+    /*padding: 0 4px;*/
+}
+
+.combine-list-wrapper:hover img {
+/*    width: 255px;
+    margin: 0 4px;*/
 }
 
 .combine-list-wrapper {

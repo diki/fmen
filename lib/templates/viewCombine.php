@@ -113,43 +113,19 @@
                     </div>
                 {% endfor %}
 
+                </div>
+
+                <div class="addthis_toolbox addthis_default_style" style="margin-top: 30px;margin-left: -4px;padding-bottom:20px;border-bottom:2px solid #000;">
+                    <a style="width:80px;" class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a style="width:89px;" class="addthis_button_tweet"></a>
+                    <a style="width:69px;" class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                    <a class="addthis_button_pinterest_pinit"></a>
+                    <a class="like-combine-big"><i class="icon-heart"></i></a>
+                </div>
+                
+                <div class="fb-comments" style="margin-top: 30px;margin-left: -7px;" data-href="http://www.pindistan.com/combines?cid={{combine['id']}}" data-width="470" data-num-posts="10"></div>
+
             </div>
-
-            <div class="addthis_toolbox addthis_default_style" style="margin-top: 30px;margin-left: -4px;padding-bottom:20px;border-bottom:2px solid #000;">
-                <a style="width:80px;" class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                <a style="width:89px;" class="addthis_button_tweet"></a>
-                <a style="width:69px;" class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                <a class="addthis_button_pinterest_pinit"></a>
-                <a class="like-combine-big"><i class="icon-heart"></i></a>
-            </div>
-            
-            <div class="fb-comments" style="margin-top: 30px;margin-left: -7px;" data-href="http://www.pindistan.com/combines?cid={{combine['id']}}" data-width="470" data-num-posts="10"></div>
-            </div>
-        </div>
-        <!-- AddThis Button BEGIN -->
-
-<!--
-<div class="addthis_toolbox addthis_default_style" style="margin-top: 30px;margin-left: -4px;padding-bottom:20px;border-bottom:2px solid #000;">
-<a class="fb-like" data-href="http://www.pindistan.com/combines?cid={{combine['id']}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></a>
-<a>
-<div class="g-plusone" data-size="small"></div>
-</a>
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-<a style="width:89px;" class="addthis_button_tweet"></a>
-<a data-pin-config="beside" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.pindistan.com%2Fcombines%3Fcid%3D{{combine['id']}}&media=http%3A%2F%2Fs3.amazonaws.com%2Fginkatego%2Fuploads%2F{{combine['imgId']}}" data-pin-do="buttonPin" ><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
-
-<a class="like-combine-big"><i class="icon-heart"></i></a>
-</div> -->
-
-
-
-
         <div class="span4 left-container">
 
             <ul style="list-style: none;" class="combine-attr-list combine-elements-list" id="combineOperations">
@@ -176,6 +152,7 @@
         </div>
         <br style="clear: both">
     </div>
+
 
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f82111686f469"></script>

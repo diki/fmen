@@ -7,6 +7,8 @@
         {% include 'head.php' %}
 
         <title>{% block title %}{% endblock %} - My Webpage</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Inder&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
 
     <style>
@@ -41,7 +43,7 @@
         
         <div class="bg-container">
         </div>
-        <h1 style="padding:30px 0; background:rgba(0,0,0,0.7);margin-top:70px;font-weight:bold;width: 100%; text-align:center;color: white;position: relative; z-index: 2;line-height:72px;text-shadow: 1px 1px 16px black;">web'in en güzel 
+        <h1 style="font-family: 'Inder', sans-serif;padding:30px 0; background:rgba(0,0,0,0.7);margin-top:70px;font-weight:bold;width: 100%; text-align:center;color: white;position: relative; z-index: 2;line-height:72px;text-shadow: 1px 1px 16px black;">web'in en güzel 
             <br/>
             <img style="opacity: 1; margin-top: 6px;"src="/images/dikikom2.png"/>
             <span>leri</span>

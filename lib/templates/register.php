@@ -7,43 +7,45 @@
     <h2>Register</h2>
     
     <div id="userRegister">
-        <ul>
-            <li>
-                <label for="e">email:</label><input type="text" name="email" id="e"/>
-                <div style="display: inline-block; color: red;" id="foremail" class="validation"></div>
-            </li>
+        <form id="registerForm" method="POST">
+            <ul>
+                <li>
+                    <label for="e">email:</label><input type="text" name="email" id="e"/>
+                    <div style="display: inline-block; color: red;" id="foremail" class="validation"></div>
+                </li>
 
-            <li>
-                <label for="n">Name:</label><input type="text" name="name" id="n"/>
-                <div style="display: inline-block; color: red;" id="forname" class="validation"></div>
-            </li>
-            <li>
-                <label for="s">Surname:</label><input type="text" name="surname" id="s"/>
-                <div style="display: inline-block; color: red;" id="forsurname" class="validation"></div>
-            </li>            
+                <li>
+                    <label for="n">Name:</label><input type="text" name="name" id="n"/>
+                    <div style="display: inline-block; color: red;" id="forname" class="validation"></div>
+                </li>
+                <li>
+                    <label for="s">Surname:</label><input type="text" name="surname" id="s"/>
+                    <div style="display: inline-block; color: red;" id="forsurname" class="validation"></div>
+                </li>            
 
-            <li>
-                <label for="p">password:</label><input type="text" name="password" id="p"/>
-                <div style="display: inline-block; color: red;" id="forpassword" class="validation"></div>
-            </li>
-            <li>
-                <label for="rp">re-password:</label><input type="text" name="re-password" id="rp"/>
-                <div style="display: inline-block; color: red;" id="forepassword" class="validation"></div>
-            </li>
+                <li>
+                    <label for="p">password:</label><input type="text" name="password" id="p"/>
+                    <div style="display: inline-block; color: red;" id="forpassword" class="validation"></div>
+                </li>
+                <li>
+                    <label for="rp">re-password:</label><input type="text" name="re-password" id="rp"/>
+                    <div style="display: inline-block; color: red;" id="forepassword" class="validation"></div>
+                </li>
 
-            <li>
-                <label for="type">type:</label>
-                <select name="type" id="t" name="type">
-                    <option value="default">Seçiniz</option>
-                    <option value="artist">Sanatçı</option>
-                    <option value="collector">Koleksiyoncu</option>
-                </select>
-                <div style="display: inline-block; color: red;" id="fortype" class="validation"></div>
-            </li>
-            <li>
-                <input type="submit" id="registerButton"/>
-            </li>                   
-        </ul>
+                <li>
+                    <label for="type">type:</label>
+                    <select name="type" id="t" name="type">
+                        <option value="default">Seçiniz</option>
+                        <option value="author">Yazar</option>
+                        <option value="reader">Okur</option>
+                    </select>
+                    <div style="display: inline-block; color: red;" id="fortype" class="validation"></div>
+                </li>
+                <li>
+                    <input type="submit" id="registerButton"/>
+                </li>                   
+            </ul>
+        </form>
     </div>
 
 {% endblock %}
@@ -97,26 +99,27 @@
                     return;
                 }
 
-                console.log("before ajax");
-                $.ajax({
-                    type: "POST",
-                    url: "/user/register",
-                    dataType: "json",
-                    data: {
-                        name: name,
-                        surname: surname,
-                        password: password,
-                        email: email,
-                        type: type
-                    },
+                $("#registerForm").submit();
+                // console.log("before ajax");
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/user/register",
+                //     dataType: "json",
+                //     data: {
+                //         name: name,
+                //         surname: surname,
+                //         password: password,
+                //         email: email,
+                //         type: type
+                //     },
 
-                    success: function(d){
-                        //console.log(d);
-                        if(d.success && d.redirect_url!==undefined){
-                            location.href=d.redirect_url;
-                        }
-                    }
-                });
+                //     success: function(d){
+                //         //console.log(d);
+                //         if(d.success && d.redirect_url!==undefined){
+                //             location.href=d.redirect_url;
+                //         }
+                //     }
+                // });
 
             });
         });

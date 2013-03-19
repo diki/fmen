@@ -6,8 +6,22 @@
         <!-- </form> -->
     </li>
     <li>
-        Hoşgeldin {{ session.username }} !
+        <span class="profile-nav">Hoşgeldin {{ session.username }} !</span>
+        <ul id="profile-list" style="display:none;background:black;color:white;list-style:none;">
+            
+            <li style="float:none;">
+                <a href="/profile/{{ session.user.id }}">Profil</a>
+            </li>
+        </ul>
     </li>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".profile-nav").click(function(){
+                $("#profile-list").toggle();
+            });
+        });
+    </script>
 {% else %}
     <li>
         <a class="user-nav-link" href="/user/register">Kaydol</a>
@@ -19,7 +33,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#login").click(function(e){
+            $(".user-nav-link").click(function(){
                 $('#loginModal').modal({});
             });
         });
@@ -31,16 +45,20 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $("#logout").click(function(e){
-                FB.logout(function(response){
-                    console.log("usr logged out");
-                    $.ajax({
-                        type: "POST",
-                        url: "/user/logout",
-                        // dataType: "json",
-                        success: function(r){
-                            window.location.href = "/";
-                        }
+                FB.getLoginStatus(function(ret) {
+                    console.log(ret);
+                    FB.logout(function(response){
+                        console.log("usr logged out");
+                        $.ajax({
+                            type: "POST",
+                            url: "/user/logout",
+                            // dataType: "json",
+                            success: function(r){
+                                window.location.href = "/";
+                            }
+                        });
                     });
+                    
                 });
             });
         });

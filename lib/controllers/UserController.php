@@ -67,9 +67,11 @@ $app->post('/user/register', function () use ($app){
 
         $email = mysql_real_escape_string($req->params('email'));
         $password = mysql_real_escape_string($req->params('password'));
-        $type = mysql_real_escape_string($req->params('type'));
-        $name = mysql_real_escape_string($req->params('name'));
-        $surname = mysql_real_escape_string($req->params('surname'));
+        $type = "author";
+        $name = ucwords(mysql_real_escape_string($req->params('name')));
+        $surname = ucwords(mysql_real_escape_string($req->params('surname')));
+
+        $authtype="cl"; //classic;
         $username = "";
        
 
@@ -77,36 +79,50 @@ $app->post('/user/register', function () use ($app){
         $rows = $userRows->result;
 
         //construct username from other names
-        $userNames = DB::read("SELECT * FROM members WHERE name=':name' AND surname=':surname'", $name, $surname);
-        $userNamesRes = $userNames->result;
+        // $userNames = DB::read("SELECT * FROM members WHERE name=':name' AND surname=':surname'", $name, $surname);
+        // $userNamesRes = $userNames->result;
 
-        if(empty($userNamesRes)){
-            $username = $name. "_" . $surname;
-        } else {
-            $username = $name. "_" . $surname . (count($userNamesRes)-1);
-        }
+        // if(empty($userNamesRes)){
+        //     $username = $name. "_" . $surname;
+        // } else {
+        //     $username = $name. " " . $surname; //. (count($userNamesRes)-1);
+        // }
+        $username = $name. " " . $surname;
         //if email is not registered
         if(!empty($rows)){
             echo json_encode(array('success'=>false, 'status'=>'This email is already registered'));
             die(); 
         } else {
+            $id = randNumericString(12);
             $user = array(
+                "id" => $id,
                 "email" => $email,
                 "password" => $password,
                 "type" => $type,
                 "name" => $name,
                 "surname" => $surname,
-                "username" => $username
+                "username" => $username,
+                "auth_type"=>$authtype,
+                "img_id" => "empty-profile.jpg",
+                "birth_date" => null
             );
 
             $newUser = DB::insert("members", $user, true);
 
             if($newUser->success){
+
                 $_SESSION['username'] = $username;
                 $_SESSION['name'] =  $name;
                 $_SESSION['profiled'] = 0;
-                
-                echo json_encode(array('success'=>true, 'redirect_url'=>'/'));
+                $_SESSION['user_id'] = $id;
+                //set user name cookie
+                $app->setEncryptedCookie('_gstun', $user['username']);
+                //set user_id cookie
+                $app->setEncryptedCookie('_gstuk', $user['id']);
+
+                $_SESSION['user'] = $user;
+                //echo json_encode(array('success'=>true, 'redirect_url'=>'/'));
+                $app->redirect(HTTP_URL);
                 die();
             }
         }      
@@ -168,7 +184,7 @@ $app->post('/user/login', function () use ($app){
 
         $email = mysql_real_escape_string($req->params('email'));
         $password = mysql_real_escape_string($req->params('password'));
-        $type = mysql_real_escape_string($req->params('type'));
+        $type = "author";        
         //$sql = mysql_query("SELECT * FROM members WHERE username = '".$username."' and password = '".$password."'");
         
         $rows = DB::read("SELECT * FROM members WHERE email=':email' AND password=':password' AND type=':type'", $email, $password, $type);
@@ -177,11 +193,13 @@ $app->post('/user/login', function () use ($app){
 
             $result = $rows->result;
             $user = $result[0];
+            $_SESSION['user'] = $user;
+            
             $_SESSION['username'] = $user['username'];
             $_SESSION['name'] =  $user['name'];
             $_SESSION['surname'] = $user['surname'];
             $_SESSION['profiled'] = $user['profiled'];
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['user_id'] = $user['id'];
             
             //set user name cookie
             $app->setEncryptedCookie('_gstun', $user['username']);
@@ -271,7 +289,7 @@ $app->get('/user/twlogin', function () use ($app){
             $email='';
             $uid = $user_info->id;
             $username = $user_info->name;
-            $_SESSION['id'] = $uid;
+            $_SESSION['user_id'] = $uid;
             $_SESSION['username'] = $username;
 
             $app->setEncryptedCookie('_gstuk', $uid);
