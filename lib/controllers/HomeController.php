@@ -7,7 +7,7 @@
             
         }
 
-        $title = "title";
+        $title = "pindistan.com";
         $body = "Home body";
 
         $view = $app -> view();

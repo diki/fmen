@@ -11,10 +11,14 @@
             $rows = $res->result;
             $combine = $rows[0];
             $userId = $app->getEncryptedCookie('_gstuk');
-
+            //$userId = $_SESSION['user_id'];
             $combineId = $combine['id'];
             //collect elements of this combine
             $view = $app -> view();
+
+            $userQuery = 'SELECT * from members where id="' . $combine["owner"]. '"';
+            $ur =  DB::read($userQuery)->result;
+            $user = $ur[0];
 
             $query = "SELECT * from combine_elements ce, user_record ur where ce.recordId=ur.id and ce.combineId='".$combineId ."'";
             $r = DB::read($query)->result;
@@ -22,11 +26,11 @@
 
             if($combine['owner']==$userId){
                 $title = "Edit combine";
-                $view -> setData(array('title' => $title, "combine" => $combine, "elements" => $elements));
-                $app->render('editCombine.php');
+                $view -> setData(array('title' => $title, "combine" => $combine, "elements" => $elements, 'creator'=>$user));
+                $app->render('viewCombine.php');
             } else {
                 $title = "kombin-".$combine['note'];
-                $view -> setData(array('title' => $title, "combine" => $combine, "elements" => $elements));
+                $view -> setData(array('title' => $title, 'creator'=>$user, "combine" => $combine, "elements" => $elements));
                 $app->render('viewCombine.php');
             }
         } else {
@@ -34,11 +38,9 @@
         }
     });
 
-    $app->get('/server/combines/manage', function () use ($app){
+    $app->get('/server/combines/m', function () use ($app){
+
         if(isset($_SESSION['username']) && $_SESSION['username']){
-            //echo "npooooooooooooooooooooooooooo";
-            //echo "posting";
-            //$app->redirect(HTTP_URL);
             $title = "Yeni kombin ekleyin";
             $bodyTitle = "Yeni kombin ekle";
             
@@ -64,6 +66,7 @@
             $category = $req->params("category");
             $creation_date = date("Y-m-d H:i:s");
 
+
             //echo randString(8);
             $newCombineID = randString(8);
             $newCombine = array(
@@ -74,7 +77,7 @@
                 "sex" => $sex,
                 "category" => $category,
                 "creation_date" => $creation_date,
-                "owner" => $_SESSION['id']
+                "owner" => $_SESSION['user_id']
             );
 
             $res = DB::insert("combines", $newCombine, true);
@@ -105,7 +108,7 @@
                 $c = $combines->result;
                 $combine = $c[0];
 
-                if($combine['owner']==$_SESSION['id'] && isset($_SESSION['id'])){
+                if($combine['owner']==$_SESSION['user_id'] && isset($_SESSION['user_id'])){
                     //first delete all records related to this combine id on combine_elements table
                     $delQuery = "DELETE from combine_elements WHERE combineId='".$combineId."'";
                     DB::query($delQuery);
@@ -179,11 +182,11 @@
     // });    
     $app->post('/server/combines/increaseLike', function () use ($app){ 
 
-        $req = $app->request();
-        $response = $app->response();
 
-        if(isset($_SESSION['id'])){
+        if(isset($_SESSION['user_id'])){
 
+            $req = $app->request();
+            $response = $app->response();
             $query = 'UPDATE combines SET likes=likes + 1 where id="'.$req->params('id'). '"';
             $res = DB::query($query);
             if($res){

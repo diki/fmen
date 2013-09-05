@@ -7,6 +7,8 @@
         {% include 'head.php' %}
 
         <title>{% block title %}{% endblock %}</title>
+
+        <meta property="og:url" content="http://www.pindistan.com" />
     </head>
 
     <body>
@@ -38,7 +40,7 @@
         </script>
 
         
-        {% include 'header4.php' %}
+        {% include 'navigation.php' %}
 
         {% block contentHeader %}
         {% endblock %}

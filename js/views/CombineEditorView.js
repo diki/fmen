@@ -95,6 +95,7 @@ var CombineEditorView = Backbone.View.extend({
             data: {
                 imgID: combineImageId,
                 name: $("#combineName", self.el).val(),
+                //title: $("#combineTitle", self.el).val(),
                 notes: $("#combineNotes", self.el).val(),
                 sex: $("#combineSex > option:selected", self.el).val(),
                 category: $("#combineCategory > option:selected", self.el).val()

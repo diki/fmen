@@ -301,7 +301,7 @@
                 </li>
                 <li>
                     <label>Açıklamalar</label>
-                    <textarea id="combineNotes" rows="4" cols="90"><%=(notes === undefined? '' : notes)%></textarea>
+                    <textarea id="combineNotes" rows="14" cols="90"><%=(notes === undefined? '' : notes)%></textarea>
                 </li>
                 <li>
                     <label>Cinsiyet</label>

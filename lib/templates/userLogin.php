@@ -1,3 +1,4 @@
+<li>
 <ul class="list">
 {% if session.username %}
     <li>
@@ -9,19 +10,23 @@
         <span class="profile-nav">Hoşgeldin {{ session.username }} !</span>
         <ul id="profile-list" style="display:none;background:black;color:white;list-style:none;">
             
-            <li style="float:none;">
-                <a href="/profile/{{ session.user.id }}">Profil</a>
-            </li>
+            {% if session.user.type=="author" %}
+                <li style="float:none;">
+                    <a href="/profile/{{ session.user.id }}">Profil</a>
+                </li>
+
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $(".profile-nav").click(function(){
+                            $("#profile-list").toggle();
+                        });
+                    });
+                </script>
+
+            {% endif %}
         </ul>
     </li>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".profile-nav").click(function(){
-                $("#profile-list").toggle();
-            });
-        });
-    </script>
 {% else %}
     <li>
         <a class="user-nav-link" href="/user/register">Kaydol</a>
@@ -84,3 +89,4 @@
 
 {% endif %}
 </ul>
+</li>

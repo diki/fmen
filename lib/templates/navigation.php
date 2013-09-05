@@ -2,14 +2,17 @@
 
     <div class="header-nav-container">
         
-        {% include 'userLogin.php' %}
-        <div class="logo">
-            <a href="/">ginkatego</a>
-        </div>
+
 
 
         <!-- <div class="sep"></div> -->
         <ul class="header-nav-list">
+            <li>
+                <div class="logo">
+                    <a href="/"><img src="/images/l3.png"/></a>
+                </div>                
+            </li>
+
             <li class="header-nav-list-item">
                 <a class="header-nav-list-item-link" href="/women">Kadın</a>
             </li>
@@ -24,7 +27,9 @@
             
             <li class="header-nav-list-item">
                 <a class="header-nav-list-item-link" href="/ginkatego/blog">Blog</a>
-            </li> 
+            </li>
+
+            {% include 'userLogin.php' %} 
 <!--             <li style="width: 20px; margin: 10px 24px 0 24px; float: left;"><span>/</span></li>
             <li class="header-nav-list-item">
                 <a class="header-nav-list-item-link" href="/ginkatego/about">Hakkımızda</a>

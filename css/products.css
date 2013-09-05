@@ -34,7 +34,7 @@
     text-align: center;
 
     width: 150px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 
     border: 1px solid #E5E5E5;
     border-radius: 4px;
@@ -134,7 +134,7 @@
 
 /* prpduct items on list */
 .catalog-image-wrapper.listed{
-    box-shadow: -3px 3px 12px #BBB;
+    /*box-shadow: -3px 3px 12px #BBB;*/
     border-radius: 0px;
     float: left;
     border: none;
@@ -147,7 +147,7 @@
     position: absolute;
     top: 0;
     left: 184px;
-    width: 150px;
+    /*width: 150px;*/
     text-align: center;
     margin-top: 35px;
 }

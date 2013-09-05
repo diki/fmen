@@ -1,19 +1,18 @@
 <?php 
     
-    include_once 'Utils.php';
-    include_once 'Console.php';
-    include_once 'DBB.php';
-    include_once 'SimpleImage.php';
-    include_once 'S3.php';
+    include 'Utils.php';
+    include 'Console.php';
+    include 'DBB.php';
+    include 'SimpleImage.php';
+    include 'S3.php';
 
-    include_once 'lib/facebook/facebook.php';
+    include 'lib/facebook/facebook.php';
 
-    include_once 'lib/twitter/OAuth.php';
-    include_once 'lib/twitter/twitteroauth.php';
+    include 'lib/twitter/OAuth.php';
+    include 'lib/twitter/twitteroauth.php';
     
-    include_once 'CommonFunctions.php';
+    include 'CommonFunctions.php';
 
-    
     /**
      * initialize DB connection
      */
@@ -27,8 +26,8 @@
     define("HTTP_URL", "http://www.pindistan.com/");
     define ("MAX_SIZE","10000"); 
 
-    define("FB_APP_ID", "572794652744127");
-    define("FB_APP_SECRET", "cbf87f1f0492521626c3ee7501da6ea4");
+    define("FB_APP_ID", "382443528535064");
+    define("FB_APP_SECRET", "f416ed9bde6ac89ef693f22fcee482fc");
 
     define("TWITTER_CONSUMER_KEY", "XcSQ6LQDr4guFm1enTOdA");
     define("TWITTER_CONSUMER_SECRET", "bvdtJwVUCqKdO6Bl3sXabdhQ1pVA3vzCQGN8xuqotI");

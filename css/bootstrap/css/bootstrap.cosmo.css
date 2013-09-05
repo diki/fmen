@@ -212,14 +212,14 @@ body {
   color: #555555;
   background-color: #ffffff;
 }
-a {
+/*a {
   color: #007fff;
   text-decoration: none;
 }
 a:hover {
   color: #0066cc;
   text-decoration: underline;
-}
+}*/
 .img-rounded {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
