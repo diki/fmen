@@ -54,7 +54,7 @@ function getPageImages() {
 function bookmark(url, isVideo) {
         
     // var documentUrl = 'http://upload'+domain+'/pin/button?image_url='+urlencode(url)+'&source_url='+urlencode(location.href);
-    var documentUrl = 'http://'+domain+'/user/record/upload?image_url='+urlencode(url)+'&source_url='+urlencode(location.href);
+    var documentUrl = domain+'/user/record/upload?image_url='+urlencode(url)+'&source_url='+urlencode(location.href);
     if (document.referrer) {
         documentUrl += "&referrer_url="+urlencode(document.referrer);
     }
